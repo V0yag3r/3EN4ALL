@@ -5,274 +5,128 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mój Blog – Nauka i Technologia</title>
 
-  <!-- Czcionka Orbitron -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-
   <style>
-    * { box-sizing: border-box; }
-
     body {
       margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background-color: #f7f9fc;
-      color: #333;
-      line-height: 1.6;
-      transition: background-color 0.5s ease, color 0.5s ease;
+      font-family: sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      transition: background-color 0.3s, color 0.3s;
     }
 
-    body.dark {
+    body.dark-mode {
       background-color: #121212;
-      color: #e0e0e0;
+      color: #eeeeee;
     }
 
-    header {
-      background: #1a1a1a;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-      transition: background-color 0.5s ease, color 0.5s ease;
-    }
-
-    nav {
-      background-color: #2a2a2a;
+    .topbar {
       display: flex;
-      align-items: flex-start;
       flex-wrap: wrap;
-      padding: 1rem;
-      position: relative;
-      transition: background-color 0.5s ease;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
+    nav.nav-links {
       margin-left: 20%;
+      padding: 1rem;
     }
 
-    nav a {
-      color: white;
+    nav.nav-links ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav.nav-links li {
+      display: inline-block;
+      margin-right: 15px;
+    }
+
+    nav.nav-links a {
       text-decoration: none;
+      color: inherit;
       font-weight: bold;
-      font-size: 1rem;
-      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .controls {
+      margin-left: 20%;
+      padding: 1rem;
+    }
+
+    .controls button {
+      font-size: 1em;
+      padding: 0.5em 1em;
       cursor: pointer;
+      margin-right: 10px;
     }
 
-    nav a:hover {
-      opacity: 0.7;
-      transform: scale(1.05);
-    }
-
-    .submenu {
-      display: none;
-      position: absolute;
-      top: 3.5rem;
-      left: 20%;
-      background: #1e1e1e;
-      border: 1px solid #444;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      z-index: 10;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .submenu a {
-      display: block;
-      color: #a0e0ff;
-      margin: 0.3rem 0;
-      font-size: 0.95rem;
-      text-decoration: none;
-    }
-
-    .submenu a:hover {
-      text-decoration: underline;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-5px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .nav-buttons {
-      display: flex;
-      gap: 0.5rem;
-      margin-left: auto;
-    }
-
-    .nav-buttons button {
-      font-family: 'Orbitron', monospace;
-      background-color: #333;
-      border: 1px solid #555;
-      color: #f1f1f1;
-      font-size: 0.9rem;
-      padding: 0.45rem 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .nav-buttons button:hover {
-      background-color: #444;
-      transform: scale(1.02);
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 2rem;
-    }
-
-    .section-title {
-      font-size: 1.6rem;
-      border-bottom: 2px solid #007bff;
-      padding-bottom: 0.3rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .about {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 3rem;
-      text-align: center;
-    }
-
-    .about img {
-      width: 250px;
-      height: 250px;
-      max-width: 100%;
-      max-height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: 50% 30%;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      border: 3px solid #e0e0e0;
-      background-color: #f0f0f0;
-    }
-
-    .post {
-      background-color: white;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      margin-bottom: 2rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    body.dark .post {
-      background-color: #1f1f1f;
-    }
-
-    .post:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background-color: #f1f1f1;
-      color: #777;
-      transition: background-color 0.5s ease, color 0.5s ease;
-    }
-
-    body.dark footer {
-      background-color: #1a1a1a;
-      color: #999;
+    main {
+      margin-left: 20%;
+      padding: 1rem;
     }
 
     @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
+      .topbar {
+        display: block;
       }
 
-      .nav-links {
-        margin-left: 0;
-        flex-direction: column;
+      nav.nav-links,
+      .controls,
+      main {
+        margin-left: 5%;
       }
 
-      .nav-buttons {
-        margin-left: 0;
-        margin-top: 1rem;
-        flex-direction: column;
+      .controls button {
         width: 100%;
-      }
-
-      .nav-buttons button {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .about img {
-        margin-bottom: 1rem;
+        margin: 0.3rem 0;
       }
     }
   </style>
 </head>
 
 <body>
+  <header class="topbar">
+    <nav class="nav-links">
+      <ul>
+        <li><a href="#omnie">O mnie</a></li>
+        <li><a href="#wpisy">Wpisy</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
 
-  <header>
-    <h1>Mój Blog</h1>
-    <p>Informatyka, Fizyka, Wszechświat, Technologie</p>
+    <div class="controls">
+      <button id="change-background">Zmień tło</button>
+      <button id="dark-mode-toggle">Tryb Ciemny</button>
+    </div>
   </header>
 
-  <nav>
-    <div class="nav-links">
-      <a id="menuO-mnie">O mnie</a>
-      <a href="#blog">Wpisy</a>
-      <a href="#contact">Kontakt</a>
-    </div>
-    <div id="submenu" class="submenu">
-      <a href="#about">O mnie (na stronie)</a>
-      <a href="zainteresowania.html">Więcej o zainteresowaniach</a>
-    </div>
-    <div class="nav-buttons">
-      <button onclick="zmienTlo()">Zmień tło</button>
-      <button id="trybBtn" onclick="toggleDarkMode()">Tryb Ciemny</button>
-    </div>
-  </nav>
-
-  <div class="container">
-    <section id="about" class="about scroll">
-      <h2 class="section-title">O mnie</h2>
-      <img src="avatar_fixed.png" alt="Moje zdjęcie" />
-      <p>
-        Nazywam się Jacek Grodnicki, urodziłem się w 1979 roku – w czasach, gdy w Polsce komputery były jeszcze czymś niemal magicznym...
-      </p>
-    </section>
-  </div>
-
-  <footer>&copy; 2025 Mój Blog – Wszystkie prawa zastrzeżone.</footer>
+  <main>
+    <h1>Witaj na moim blogu</h1>
+    <p>To jest przykładowy wpis. Tutaj może być ciekawa treść o technologii, fizyce lub kosmosie.</p>
+  </main>
 
   <script>
-    function zmienTlo() {
-      const kolory = ['#f7f9fc', '#eeeeee', '#dfe6e9', '#cfd8dc', '#eceff1'];
-      const losowyKolor = kolory[Math.floor(Math.random() * kolory.length)];
-      document.body.style.backgroundColor = losowyKolor;
-    }
+    const pastelColors = [
+      "#f3f4f6", // jasny szaro-niebieski
+      "#e0e7ff", // pastelowy niebieski
+      "#fef9c3", // delikatny żółty
+      "#dcfce7", // bardzo jasna zieleń
+      "#fff1f2"  // blady róż
+    ];
 
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark');
-      const btn = document.getElementById('trybBtn');
-      btn.textContent = document.body.classList.contains('dark') ? 'Tryb Jasny' : 'Tryb Ciemny';
-    }
+    let currentColor = 0;
 
-    const linkOMnie = document.getElementById('menuO-mnie');
-    const submenu = document.getElementById('submenu');
+    document.getElementById("change-background").addEventListener("click", () => {
+      currentColor = (currentColor + 1) % pastelColors.length;
+      document.body.style.backgroundColor = pastelColors[currentColor];
 
-    linkOMnie.addEventListener('click', () => {
-      submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!linkOMnie.contains(e.target) && !submenu.contains(e.target)) {
-        submenu.style.display = 'none';
+      // Dla lepszej widoczności w jasnym trybie
+      if (!document.body.classList.contains('dark-mode')) {
+        document.body.style.color = "#000000";
       }
     });
-  </script>
 
+    document.getElementById("dark-mode-toggle").addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
+  </script>
 </body>
 </html>
