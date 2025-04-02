@@ -18,12 +18,14 @@
       background-color: #121212;
       color: #e0e0e0;
     }
+
     header {
       background: linear-gradient(135deg, #007bff, #00bfff);
       color: white;
       padding: 2rem;
       text-align: center;
     }
+
     nav {
       background-color: #0056b3;
       display: flex;
@@ -31,6 +33,7 @@
       flex-wrap: wrap;
       padding: 1rem;
     }
+
     nav a {
       color: white;
       text-decoration: none;
@@ -39,6 +42,7 @@
       margin-right: 1.5rem;
       transition: opacity 0.3s ease, transform 0.3s ease;
     }
+
     nav a:hover {
       opacity: 0.7;
       transform: scale(1.05);
@@ -51,20 +55,24 @@
     }
 
     .nav-buttons button {
-      color: white;
-      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #00c9ff, #92fe9d);
       border: none;
+      color: #fff;
       font-weight: bold;
-      font-size: 1rem;
-      cursor: pointer;
+      font-size: 0.95rem;
       padding: 0.5rem 1rem;
-      border-radius: 8px;
-      transition: transform 0.3s ease, background-color 0.3s ease;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     .nav-buttons button:hover {
-      transform: scale(1.05);
-      background-color: rgba(0, 0, 0, 0.7);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
     }
 
     .container {
@@ -72,12 +80,14 @@
       margin: auto;
       padding: 2rem;
     }
+
     .section-title {
       font-size: 1.8rem;
       border-bottom: 3px solid #007bff;
       padding-bottom: 0.5rem;
       margin-bottom: 1.5rem;
     }
+
     .about {
       display: flex;
       flex-direction: column;
@@ -85,6 +95,7 @@
       gap: 1rem;
       margin-bottom: 3rem;
     }
+
     .about img {
       width: 250px;
       height: 250px;
@@ -95,6 +106,7 @@
       border: 4px solid white;
       background-color: #f0f0f0;
     }
+
     .post {
       background-color: white;
       padding: 1.5rem;
@@ -103,68 +115,46 @@
       margin-bottom: 2rem;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     body.dark .post {
       background-color: #1f1f1f;
     }
+
     .post:hover {
       transform: translateY(-5px);
       box-shadow: 0 12px 30px rgba(0,0,0,0.1);
     }
-    .hidden-content {
-      display: none;
-      margin-top: 1rem;
-    }
-    .contact {
-      margin-top: 4rem;
-      background-color: #f1f1f1;
-      padding: 2rem;
-      border-radius: 10px;
-    }
-    body.dark .contact {
-      background-color: #222;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 0.8rem;
-      margin: 0.5rem 0 1rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
-    button {
-      padding: 10px 20px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #1e7e34;
-    }
+
     footer {
       text-align: center;
       padding: 1.5rem;
       background-color: #f1f1f1;
       color: #777;
     }
+
+    body.dark footer {
+      background-color: #1a1a1a;
+      color: #999;
+    }
+
     @media (max-width: 600px) {
       nav {
         flex-direction: column;
         align-items: flex-start;
       }
+
       .nav-buttons {
         margin-left: 0;
         margin-top: 1rem;
         flex-direction: column;
         width: 100%;
       }
+
       .nav-buttons button {
         width: 100%;
-        text-align: left;
+        justify-content: center;
       }
+
       .about { text-align: center; }
       .about img { margin-bottom: 1rem; }
     }
@@ -180,27 +170,36 @@
     <a href="#blog">Wpisy</a>
     <a href="#contact">Kontakt</a>
     <div class="nav-buttons">
-      <button onclick="zmienTlo()">Zmień tło</button>
-      <button onclick="toggleDarkMode()">Tryb Ciemny</button>
+      <button onclick="zmienTlo()">🌈 Zmień tło</button>
+      <button id="trybBtn" onclick="toggleDarkMode()">🌙 Tryb Ciemny</button>
     </div>
   </nav>
+
   <div class="container">
     <section id="about" class="about scroll">
       <h2 class="section-title">O mnie</h2>
       <img src="avatar_fixed.png" alt="Moje zdjęcie" />
       <p>Nazywam się Jacek Grodnicki, urodziłem się w 1979 roku – w czasach, gdy w Polsce komputery były jeszcze czymś niemal magicznym...
-      <!-- Reszta treści bez zmian -->
       </p>
     </section>
   </div>
+
   <footer>&copy; 2025 Mój Blog – Wszystkie prawa zastrzeżone.</footer>
+
   <script>
     function zmienTlo() {
       const kolory = ['#f7f9fc', '#fff8e1', '#e3f2fd', '#e8f5e9', '#fce4ec'];
       document.body.style.backgroundColor = kolory[Math.floor(Math.random() * kolory.length)];
     }
+
     function toggleDarkMode() {
       document.body.classList.toggle('dark');
+      const btn = document.getElementById('trybBtn');
+      if (document.body.classList.contains('dark')) {
+        btn.innerHTML = '☀️ Tryb Jasny';
+      } else {
+        btn.innerHTML = '🌙 Tryb Ciemny';
+      }
     }
   </script>
 </body>
