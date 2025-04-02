@@ -13,7 +13,7 @@
     body {
       margin: 0;
       font-family: 'Orbitron', sans-serif;
-      background-color: #e6f0f7; /* domyślny pastelowy błękit */
+      background-color: #f7f9fc;
       color: #333;
       line-height: 1.6;
       transition: background-color 0.5s ease, color 0.5s ease;
@@ -58,13 +58,13 @@
     .menu-hover {
       position: relative;
       display: inline-block;
-      padding-bottom: 1rem;
+      padding-bottom: 1rem; /* zapobiega znikaniu submenu przy przejściu myszką */
     }
 
     .submenu {
       display: none;
       position: absolute;
-      top: 2.5rem;
+      top: 2.5rem; /* lekko oddalone od linku "O mnie" */
       left: 0;
       background: #1e1e1e;
       border: 1px solid #444;
@@ -242,17 +242,8 @@
 
   <script>
     function zmienTlo() {
-      const koloryPastelowe = [
-        '#e6f0f7', // pastelowy błękit
-        '#d0e7f5',
-        '#d8f3f9',
-        '#cce5f6',
-        '#e3f2fd',
-        '#f0faff',
-        '#def3f6',
-        '#cbefff'
-      ];
-      const losowyKolor = koloryPastelowe[Math.floor(Math.random() * koloryPastelowe.length)];
+      const kolory = ['#dfe6e9', '#cfd8dc', '#b0bec5', '#90a4ae', '#78909c'];
+      const losowyKolor = kolory[Math.floor(Math.random() * kolory.length)];
       document.body.style.backgroundColor = losowyKolor;
     }
   </script>
