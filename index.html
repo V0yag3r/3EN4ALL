@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mój Blog – Nauka i Technologia</title>
-
   <style>
     :root {
       --text-light: #111827;
@@ -31,23 +30,23 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       border-bottom: 1px solid #ccc;
+      flex-wrap: wrap;
     }
 
-    .nav {
+    nav {
       display: flex;
       gap: 1.5rem;
     }
 
-    .nav a {
+    nav a {
       text-decoration: none;
-      color: inherit;
       font-weight: bold;
+      color: inherit;
       font-size: 1rem;
     }
 
-    .nav a:hover {
+    nav a:hover {
       text-decoration: underline;
     }
 
@@ -59,7 +58,7 @@
 
     .controls button {
       font-size: 1rem;
-      padding: 0.4rem 1rem;
+      padding: 0.5rem 1rem;
       background-color: #d1d5db;
       border: none;
       border-radius: 6px;
@@ -98,15 +97,13 @@
     }
   </style>
 </head>
-
 <body>
   <header>
-    <nav class="nav">
+    <nav>
       <a href="#omnie">O mnie</a>
       <a href="#wpisy">Wpisy</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
-
     <div class="controls">
       <button id="change-background">Zmień tło</button>
       <button id="toggle-dark">Tryb Ciemny</button>
@@ -116,43 +113,41 @@
   <main>
     <h1>Witaj na moim blogu</h1>
     <p>
-      To jest miejsce, gdzie dzielę się pasją do informatyki, fizyki i technologii.  
-      Zapraszam do lektury moich wpisów, odkrywania ciekawostek oraz poznawania świata nauki!
+      To jest miejsce, gdzie dzielę się pasją do informatyki, fizyki i technologii.
+      Zapraszam do lektury moich wpisów oraz odkrywania nauki!
     </p>
   </main>
 
   <script>
     const pastelColors = [
-      "#f3f4f6",
-      "#e0e7ff",
-      "#fef9c3",
-      "#dcfce7",
-      "#fff1f2"
+      "#f3f4f6",  // jasny szaro-niebieski (domyślny)
+      "#e0e7ff",  // pastelowy niebieski
+      "#fef9c3",  // delikatny żółty
+      "#dcfce7",  // jasna zieleń
+      "#fff1f2"   // blady róż
     ];
 
     let currentColor = 0;
+    const body = document.body;
+    const changeBgBtn = document.getElementById("change-background");
+    const darkModeBtn = document.getElementById("toggle-dark");
 
-    const bgBtn = document.getElementById("change-background");
-    const darkBtn = document.getElementById("toggle-dark");
-
-    bgBtn.addEventListener("click", () => {
+    changeBgBtn.addEventListener("click", () => {
       currentColor = (currentColor + 1) % pastelColors.length;
-      document.body.style.backgroundColor = pastelColors[currentColor];
-
-      if (!document.body.classList.contains("dark-mode")) {
-        document.body.style.color = "#111827";
+      if (!body.classList.contains("dark-mode")) {
+        body.style.backgroundColor = pastelColors[currentColor];
+        body.style.color = "#111827";
       }
     });
 
-    darkBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-
-      if (document.body.classList.contains("dark-mode")) {
-        document.body.style.backgroundColor = "#121212";
-        document.body.style.color = "#f3f4f6";
+    darkModeBtn.addEventListener("click", () => {
+      body.classList.toggle("dark-mode");
+      if (body.classList.contains("dark-mode")) {
+        body.style.backgroundColor = "#121212";
+        body.style.color = "#f3f4f6";
       } else {
-        document.body.style.backgroundColor = pastelColors[currentColor];
-        document.body.style.color = "#111827";
+        body.style.backgroundColor = pastelColors[currentColor];
+        body.style.color = "#111827";
       }
     });
   </script>
