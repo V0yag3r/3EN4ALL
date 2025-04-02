@@ -30,6 +30,12 @@
       color: white;
       padding: 2rem;
       text-align: center;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    body:not(.dark) header {
+      background: #1a1a1a;
+      color: white;
     }
 
     nav {
@@ -39,6 +45,7 @@
       flex-wrap: wrap;
       padding: 1rem;
       position: relative;
+      transition: background-color 0.5s ease;
     }
 
     nav a {
@@ -171,6 +178,7 @@
       padding: 1.5rem;
       background-color: #f1f1f1;
       color: #777;
+      transition: background-color 0.5s ease, color 0.5s ease;
     }
 
     body.dark footer {
@@ -219,15 +227,14 @@
     <a href="#blog">Wpisy</a>
     <a href="#contact">Kontakt</a>
     <div class="nav-buttons">
-      <button onclick="zmienTlo()">🖥️ Zmień tło</button>
-      <button id="trybBtn" onclick="toggleDarkMode()">🌘 Tryb Ciemny</button>
+      <button onclick="zmienTlo()">Zmień tło</button>
+      <button id="trybBtn" onclick="toggleDarkMode()">Tryb Ciemny</button>
     </div>
   </nav>
 
   <div class="container">
     <section id="about" class="about scroll">
       <h2 class="section-title">O mnie</h2>
-      <!-- Upewnij się, że avatar_fixed.png jest w tym samym folderze co ten plik HTML -->
       <img src="avatar_fixed.png" alt="Moje zdjęcie" />
       <p>
         Nazywam się Jacek Grodnicki, urodziłem się w 1979 roku – w czasach, gdy w Polsce komputery były jeszcze czymś niemal magicznym...
@@ -238,15 +245,26 @@
   <footer>&copy; 2025 Mój Blog – Wszystkie prawa zastrzeżone.</footer>
 
   <script>
+    // Funkcja zmiany tła całej strony
     function zmienTlo() {
       const kolory = ['#f7f9fc', '#eeeeee', '#dfe6e9', '#cfd8dc', '#eceff1'];
-      document.body.style.backgroundColor = kolory[Math.floor(Math.random() * kolory.length)];
+      const losowyKolor = kolory[Math.floor(Math.random() * kolory.length)];
+      document.body.style.backgroundColor = losowyKolor;
+
+      // Dodatkowo zmień tło dla sekcji, jeśli potrzeba:
+      const posty = document.querySelectorAll('.post');
+      posty.forEach(post => {
+        if (!document.body.classList.contains('dark')) {
+          post.style.backgroundColor = '#ffffff';
+        }
+      });
     }
 
+    // Tryb ciemny
     function toggleDarkMode() {
       document.body.classList.toggle('dark');
       const btn = document.getElementById('trybBtn');
-      btn.innerHTML = document.body.classList.contains('dark') ? '☀️ Tryb Jasny' : '🌘 Tryb Ciemny';
+      btn.textContent = document.body.classList.contains('dark') ? 'Tryb Jasny' : 'Tryb Ciemny';
     }
 
     // Submenu „O mnie”
