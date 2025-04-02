@@ -9,32 +9,44 @@
     :root {
       --text-light: #111827;
       --text-dark: #f3f4f6;
-      --bg-light: #f3f4f6;
       --bg-dark: #121212;
     }
 
     body {
       margin: 0;
-      font-family: sans-serif;
-      background-color: var(--bg-light);
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6; /* domyślne stonowane tło */
       color: var(--text-light);
-      transition: background-color 0.3s, col
-      padding: 0;
+      transition: background-color 0.3s, color 0.3s;
     }
 
-    .nav-links li {
-      display: inline-block;
-      margin-right: 20px;
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
     }
 
-    .nav-links a {
+    header {
+      background-color: inherit;
+      padding: 1rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav {
+      margin-left: 20%;
+      padding: 0.5rem 0;
+    }
+
+    .nav a {
+      margin-right: 1.5rem;
       text-decoration: none;
-      color: inherit;
       font-weight: bold;
+      color: inherit;
       font-size: 1rem;
     }
 
-    .nav-links a:hover {
+    .nav a:hover {
       text-decoration: underline;
     }
 
@@ -44,9 +56,9 @@
     }
 
     .controls button {
-      font-size: 1em;
-      padding: 0.5em 1em;
-      margin-right: 10px;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      margin-right: 0.5rem;
       background-color: #d1d5db;
       border: none;
       border-radius: 6px;
@@ -60,7 +72,7 @@
 
     body.dark-mode .controls button {
       background-color: #374151;
-      color: #f3f4f6;
+      color: var(--text-dark);
     }
 
     body.dark-mode .controls button:hover {
@@ -70,16 +82,11 @@
     main {
       margin-left: 20%;
       padding: 2rem 1rem;
+      max-width: 800px;
     }
 
     @media (max-width: 600px) {
-      .topbar {
-        display: block;
-      }
-
-      .nav-links,
-      .controls,
-      main {
+      header, .nav, .controls, main {
         margin-left: 5%;
       }
 
@@ -87,65 +94,66 @@
         width: 100%;
         margin: 0.3rem 0;
       }
+
+      .nav {
+        margin-bottom: 1rem;
+      }
+
+      .nav a {
+        display: block;
+        margin-bottom: 0.5rem;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header class="topbar">
-    <nav class="nav-links">
-      <ul>
-        <li><a href="#omnie">O mnie</a></li>
-        <li><a href="#wpisy">Wpisy</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-      </ul>
+  <header>
+    <nav class="nav">
+      <a href="#omnie">O mnie</a>
+      <a href="#wpisy">Wpisy</a>
+      <a href="#kontakt">Kontakt</a>
     </nav>
 
     <div class="controls">
       <button id="change-background">Zmień tło</button>
-      <button id="dark-mode-toggle">Tryb Ciemny</button>
+      <button id="toggle-dark">Tryb Ciemny</button>
     </div>
   </header>
 
   <main>
     <h1>Witaj na moim blogu</h1>
     <p>
-      To jest przykładowy wpis. Tutaj może znajdować się treść dotycząca nauki, technologii, kosmosu, fizyki lub informatyki.
+      To jest miejsce, gdzie dzielę się pasją do informatyki, fizyki i technologii.  
+      Zapraszam do lektury moich wpisów, odkrywania ciekawostek oraz poznawania świata nauki!
     </p>
   </main>
 
   <script>
     const pastelColors = [
-      "#f3f4f6", // szaro-niebieski
-      "#e0e7ff", // pastelowy niebieski
-      "#fef9c3", // jasny żółty
-      "#dcfce7", // delikatna zieleń
-      "#fff1f2"  // jasny róż
+      "#f3f4f6", // domyślny
+      "#e0e7ff",
+      "#fef9c3",
+      "#dcfce7",
+      "#fff1f2"
     ];
 
-    let currentColorIndex = 0;
+    let currentColor = 0;
 
-    const changeBgButton = document.getElementById("change-background");
-    const darkModeButton = document.getElementById("dark-mode-toggle");
+    const bgBtn = document.getElementById("change-background");
+    const darkBtn = document.getElementById("toggle-dark");
 
-    changeBgButton.addEventListener("click", () => {
-      currentColorIndex = (currentColorIndex + 1) % pastelColors.length;
-      document.body.style.backgroundColor = pastelColors[currentColorIndex];
-
-      if (!document.body.classList.contains("dark-mode")) {
-        document.body.style.color = "#111827";
-      }
+    bgBtn.addEventListener("click", () => {
+      currentColor = (currentColor + 1) % pastelColors.length;
+      document.body.style.backgroundColor = pastelColors[currentColor];
     });
 
-    darkModeButton.addEventListener("click", () => {
+    darkBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
-
       if (document.body.classList.contains("dark-mode")) {
         document.body.style.backgroundColor = "#121212";
-        document.body.style.color = "#f3f4f6";
       } else {
-        document.body.style.backgroundColor = pastelColors[currentColorIndex];
-        document.body.style.color = "#111827";
+        document.body.style.backgroundColor = pastelColors[currentColor];
       }
     });
   </script>
