@@ -9,21 +9,26 @@
       --text-light: #111827;
       --text-dark: #f3f4f6;
       --bg-dark: #121212;
-      --bg-light: #f3f4f6;
     }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-light);
       transition: background-color 0.3s, color 0.3s;
+      background-color: #f3f4f6;
+      color: var(--text-light);
     }
 
     body.dark-mode {
       background-color: var(--bg-dark);
       color: var(--text-dark);
     }
+
+    body.bg-0 { background-color: #f3f4f6; }
+    body.bg-1 { background-color: #e0e7ff; }
+    body.bg-2 { background-color: #fef9c3; }
+    body.bg-3 { background-color: #dcfce7; }
+    body.bg-4 { background-color: #fff1f2; }
 
     .wrapper {
       max-width: 1200px;
@@ -107,7 +112,7 @@
     }
   </style>
 </head>
-<body>
+<body class="bg-0">
   <header>
     <div class="wrapper topbar">
       <nav>
@@ -131,35 +136,33 @@
   </main>
 
   <script>
-    const pastelColors = [
-      "#f3f4f6",
-      "#e0e7ff",
-      "#fef9c3",
-      "#dcfce7",
-      "#fff1f2"
-    ];
-
+    const totalColors = 5;
     let currentColor = 0;
+
     const body = document.body;
-    const changeBtn = document.getElementById("change-background");
+    const changeBgBtn = document.getElementById("change-background");
     const darkBtn = document.getElementById("toggle-dark");
 
-    changeBtn.addEventListener("click", () => {
+    function applyBgClass(index) {
+      // usuń wszystkie możliwe klasy tła
+      for (let i = 0; i < totalColors; i++) {
+        body.classList.remove(`bg-${i}`);
+      }
+      body.classList.add(`bg-${index}`);
+    }
+
+    changeBgBtn.addEventListener("click", () => {
       body.classList.remove("dark-mode");
-      body.style.backgroundColor = pastelColors[currentColor];
-      body.style.color = "#111827";
-      currentColor = (currentColor + 1) % pastelColors.length;
+      currentColor = (currentColor + 1) % totalColors;
+      applyBgClass(currentColor);
     });
 
     darkBtn.addEventListener("click", () => {
       if (body.classList.contains("dark-mode")) {
         body.classList.remove("dark-mode");
-        body.style.backgroundColor = pastelColors[currentColor];
-        body.style.color = "#111827";
+        applyBgClass(currentColor);
       } else {
         body.classList.add("dark-mode");
-        body.style.backgroundColor = "#121212";
-        body.style.color = "#f3f4f6";
       }
     });
   </script>
