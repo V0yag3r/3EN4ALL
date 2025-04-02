@@ -14,9 +14,9 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
       background-color: #f3f4f6;
       color: var(--text-light);
-      transition: background-color 0.3s, color 0.3s;
     }
 
     body.dark-mode {
@@ -24,13 +24,28 @@
       color: var(--text-dark);
     }
 
+    body.bg-0 { background-color: #f3f4f6; }
+    body.bg-1 { background-color: #e0e7ff; }
+    body.bg-2 { background-color: #fef9c3; }
+    body.bg-3 { background-color: #dcfce7; }
+    body.bg-4 { background-color: #fff1f2; }
+
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
     header {
-      padding: 1rem 2rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      border-bottom: 1px solid #ccc;
     }
 
     nav {
@@ -52,7 +67,6 @@
     .controls {
       display: flex;
       gap: 0.8rem;
-      margin-top: 0.5rem;
     }
 
     .controls button {
@@ -79,13 +93,11 @@
     }
 
     main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 2rem;
+      padding: 2rem 0;
     }
 
     @media (max-width: 768px) {
-      header {
+      .topbar {
         flex-direction: column;
         align-items: flex-start;
       }
@@ -100,59 +112,57 @@
     }
   </style>
 </head>
-
-<body>
+<body class="bg-0">
   <header>
-    <nav>
-      <a href="#omnie">O mnie</a>
-      <a href="#wpisy">Wpisy</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
-    <div class="controls">
-      <button id="change-background">Zmień tło</button>
-      <button id="toggle-dark">Tryb Ciemny</button>
+    <div class="wrapper topbar">
+      <nav>
+        <a href="#omnie">O mnie</a>
+        <a href="#wpisy">Wpisy</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <div class="controls">
+        <button id="change-background">Zmień tło</button>
+        <button id="toggle-dark">Tryb Ciemny</button>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main class="wrapper">
     <h1>Witaj na moim blogu</h1>
     <p>
-      To jest miejsce, gdzie dzielę się pasją do informatyki, fizyki i technologii.  
-      Zapraszam do lektury moich wpisów oraz odkrywania świata nauki!
+      To jest miejsce, gdzie dzielę się pasją do informatyki, fizyki i technologii.
+      Zapraszam do lektury moich wpisów oraz odkrywania nauki!
     </p>
   </main>
 
   <script>
-    const pastelColors = [
-      "#f3f4f6",  // domyślny
-      "#e0e7ff",  // niebieski
-      "#fef9c3",  // żółty
-      "#dcfce7",  // zieleń
-      "#fff1f2"   // róż
-    ];
-
+    const totalColors = 5;
     let currentColor = 0;
+
     const body = document.body;
-    const changeBtn = document.getElementById("change-background");
+    const changeBgBtn = document.getElementById("change-background");
     const darkBtn = document.getElementById("toggle-dark");
 
-    changeBtn.addEventListener("click", () => {
-      if (body.classList.contains("dark-mode")) return;
+    function applyBgClass(index) {
+      // usuń wszystkie możliwe klasy tła
+      for (let i = 0; i < totalColors; i++) {
+        body.classList.remove(`bg-${i}`);
+      }
+      body.classList.add(`bg-${index}`);
+    }
 
-      currentColor = (currentColor + 1) % pastelColors.length;
-      body.style.backgroundColor = pastelColors[currentColor];
-      body.style.color = "#111827";
+    changeBgBtn.addEventListener("click", () => {
+      body.classList.remove("dark-mode");
+      currentColor = (currentColor + 1) % totalColors;
+      applyBgClass(currentColor);
     });
 
     darkBtn.addEventListener("click", () => {
-      body.classList.toggle("dark-mode");
-
       if (body.classList.contains("dark-mode")) {
-        body.style.backgroundColor = "#121212";
-        body.style.color = "#f3f4f6";
+        body.classList.remove("dark-mode");
+        applyBgClass(currentColor);
       } else {
-        body.style.backgroundColor = pastelColors[currentColor];
-        body.style.color = "#111827";
+        body.classList.add("dark-mode");
       }
     });
   </script>
