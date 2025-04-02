@@ -13,7 +13,7 @@
     body {
       margin: 0;
       font-family: 'Orbitron', sans-serif;
-      background-color: #f7f9fc;
+      background-color: #e6f0f7;
       color: #333;
       line-height: 1.6;
       transition: background-color 0.5s ease, color 0.5s ease;
@@ -58,13 +58,13 @@
     .menu-hover {
       position: relative;
       display: inline-block;
-      padding-bottom: 1rem; /* zapobiega znikaniu submenu przy przejściu myszką */
+      padding-bottom: 1rem;
     }
 
     .submenu {
       display: none;
       position: absolute;
-      top: 2.5rem; /* lekko oddalone od linku "O mnie" */
+      top: 2.5rem;
       left: 0;
       background: #1e1e1e;
       border: 1px solid #444;
@@ -138,8 +138,6 @@
     .about img {
       width: 250px;
       height: 250px;
-      max-width: 100%;
-      max-height: 100%;
       border-radius: 50%;
       object-fit: cover;
       object-position: 50% 30%;
@@ -162,6 +160,11 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
 
+    #more-about {
+      display: none;
+      margin-top: 2rem;
+    }
+
     footer {
       text-align: center;
       padding: 1.5rem;
@@ -169,7 +172,6 @@
       color: #777;
     }
 
-    /* Tekst w sekcji O mnie zawsze czarny */
     body .about .section-title,
     body .about .about-text {
       color: #000;
@@ -217,7 +219,7 @@
       <div class="menu-hover">
         <a>O mnie ▼</a>
         <div class="submenu">
-          <a href="zainteresowania.html">Więcej</a>
+          <a href="#more-about" onclick="pokazWiecej(event)">Więcej</a>
         </div>
       </div>
       <a href="#blog">Wpisy</a>
@@ -236,15 +238,40 @@
         Nazywam się Jacek Grodnicki, urodziłem się w 1979 roku – w czasach, gdy w Polsce komputery były jeszcze czymś niemal magicznym...
       </p>
     </section>
+
+    <section id="more-about" class="post">
+      <h3 class="section-title">Więcej o mnie</h3>
+      <p>
+        Cześć! Mam 46 lat i od zawsze fascynuję się światem technologii i nauki. Informatyka, nowe technologie, a także fizyka – szczególnie fizyka kwantowa – to moje pasje. Informatyka interesowała mnie od zawsze, a urodziłem się w 1979 roku – wtedy komputery to była absolutna nowość w Polsce.
+      </p>
+      <p>
+        Zaczynałem od Atari, Commodore, Amigi 1200 – potem był już mój pierwszy PC. Programowałem w BASIC-u i jako dzieciak tworzyłem pierwsze „programy” – kalkulatory, zgadywanki... (tak, nadużywałem polecenia <code>GOTO</code> 😄).
+      </p>
+      <p>
+        Nowoczesne osiągnięcia techniczne fascynowały mnie od zawsze. Pochłaniałem filmy sci-fi i książki – szczególnie Lema i Artura C. Clarke’a („Miasto i gwiazdy”!). Rozbierałem sprzęty ze śmietników, żeby zrozumieć jak działają. Wiedza była dla mnie przygodą.
+      </p>
+      <p>
+        Czasami interesowały mnie rzeczy, które dla moich rówieśników były zupełnie nieistotne. Uwielbiam zgłębiać tajemnice wszechświata, zadawać pytania i szukać odpowiedzi. Interesuje mnie świat nie tylko przyziemny (praca, nauka, obowiązki), ale też to, jak skonstruowana jest rzeczywistość, w której żyjemy.
+      </p>
+    </section>
   </div>
 
   <footer>&copy; 2025 Mój Blog – Wszystkie prawa zastrzeżone.</footer>
 
   <script>
     function zmienTlo() {
-      const kolory = ['#dfe6e9', '#cfd8dc', '#b0bec5', '#90a4ae', '#78909c'];
-      const losowyKolor = kolory[Math.floor(Math.random() * kolory.length)];
+      const koloryPastelowe = [
+        '#e6f0f7', '#d0e7f5', '#d8f3f9', '#cce5f6',
+        '#e3f2fd', '#f0faff', '#def3f6', '#cbefff'
+      ];
+      const losowyKolor = koloryPastelowe[Math.floor(Math.random() * koloryPastelowe.length)];
       document.body.style.backgroundColor = losowyKolor;
+    }
+
+    function pokazWiecej(event) {
+      event.preventDefault();
+      document.getElementById("more-about").style.display = "block";
+      document.getElementById("more-about").scrollIntoView({ behavior: "smooth" });
     }
   </script>
 
