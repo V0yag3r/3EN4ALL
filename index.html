@@ -162,6 +162,12 @@
 
     body.dark .post {
       background-color: #1f1f1f;
+      color: #e8e8e8;
+    }
+
+    body.dark .post p,
+    body.dark .about p {
+      color: #ccc;
     }
 
     .post:hover {
@@ -221,7 +227,7 @@
 
   <nav>
     <div class="nav-links">
-      <a id="menuO-mnie">O mnie</a>
+      <a id="menuO-mnie">O mnie ▼</a>
       <a href="#blog">Wpisy</a>
       <a href="#contact">Kontakt</a>
     </div>
@@ -238,7 +244,7 @@
   <div class="container">
     <section id="about" class="about scroll">
       <h2 class="section-title">O mnie</h2>
-      <img src="avatar_fixed.png" alt="Moje zdjęcie" />
+      <img src="avatar_fixed.png" alt="Zdjęcie Jacka Grodnickiego" />
       <p>
         Nazywam się Jacek Grodnicki, urodziłem się w 1979 roku – w czasach, gdy w Polsce komputery były jeszcze czymś niemal magicznym...
       </p>
@@ -258,6 +264,9 @@
       document.body.classList.toggle('dark');
       const btn = document.getElementById('trybBtn');
       btn.textContent = document.body.classList.contains('dark') ? 'Tryb Jasny' : 'Tryb Ciemny';
+
+      // Zamknij submenu po zmianie trybu
+      document.getElementById('submenu').style.display = 'none';
     }
 
     const linkOMnie = document.getElementById('menuO-mnie');
