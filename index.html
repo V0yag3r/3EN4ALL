@@ -30,7 +30,6 @@
       color: white;
       padding: 2rem;
       text-align: center;
-      transition: background-color 0.5s ease, color 0.5s ease;
     }
 
     nav {
@@ -40,13 +39,6 @@
       flex-wrap: wrap;
       padding: 1rem;
       position: relative;
-      transition: background-color 0.5s ease;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      margin-left: 20%;
     }
 
     nav a {
@@ -54,7 +46,9 @@
       text-decoration: none;
       font-weight: bold;
       font-size: 1rem;
+      margin-right: 1.5rem;
       transition: opacity 0.3s ease, transform 0.3s ease;
+      position: relative;
       cursor: pointer;
     }
 
@@ -67,7 +61,7 @@
       display: none;
       position: absolute;
       top: 3.5rem;
-      left: 20%;
+      left: 1rem;
       background: #1e1e1e;
       border: 1px solid #444;
       padding: 0.5rem 1rem;
@@ -101,6 +95,9 @@
 
     .nav-buttons button {
       font-family: 'Orbitron', monospace;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       background-color: #333;
       border: 1px solid #555;
       color: #f1f1f1;
@@ -174,7 +171,6 @@
       padding: 1.5rem;
       background-color: #f1f1f1;
       color: #777;
-      transition: background-color 0.5s ease, color 0.5s ease;
     }
 
     body.dark footer {
@@ -186,11 +182,6 @@
       nav {
         flex-direction: column;
         align-items: flex-start;
-      }
-
-      .nav-links {
-        margin-left: 0;
-        flex-direction: column;
       }
 
       .nav-buttons {
@@ -220,24 +211,23 @@
   </header>
 
   <nav>
-    <div class="nav-links">
-      <a id="menuO-mnie">O mnie</a>
-      <a href="#blog">Wpisy</a>
-      <a href="#contact">Kontakt</a>
-    </div>
+    <a id="menuO-mnie">O mnie</a>
     <div id="submenu" class="submenu">
       <a href="#about">O mnie (na stronie)</a>
       <a href="zainteresowania.html">Więcej o zainteresowaniach</a>
     </div>
+    <a href="#blog">Wpisy</a>
+    <a href="#contact">Kontakt</a>
     <div class="nav-buttons">
-      <button onclick="zmienTlo()">Zmień tło</button>
-      <button id="trybBtn" onclick="toggleDarkMode()">Tryb Ciemny</button>
+      <button onclick="zmienTlo()">🖥️ Zmień tło</button>
+      <button id="trybBtn" onclick="toggleDarkMode()">🌘 Tryb Ciemny</button>
     </div>
   </nav>
 
   <div class="container">
     <section id="about" class="about scroll">
       <h2 class="section-title">O mnie</h2>
+      <!-- Upewnij się, że avatar_fixed.png jest w tym samym folderze co ten plik HTML -->
       <img src="avatar_fixed.png" alt="Moje zdjęcie" />
       <p>
         Nazywam się Jacek Grodnicki, urodziłem się w 1979 roku – w czasach, gdy w Polsce komputery były jeszcze czymś niemal magicznym...
@@ -250,16 +240,16 @@
   <script>
     function zmienTlo() {
       const kolory = ['#f7f9fc', '#eeeeee', '#dfe6e9', '#cfd8dc', '#eceff1'];
-      const losowyKolor = kolory[Math.floor(Math.random() * kolory.length)];
-      document.body.style.backgroundColor = losowyKolor;
+      document.body.style.backgroundColor = kolory[Math.floor(Math.random() * kolory.length)];
     }
 
     function toggleDarkMode() {
       document.body.classList.toggle('dark');
       const btn = document.getElementById('trybBtn');
-      btn.textContent = document.body.classList.contains('dark') ? 'Tryb Jasny' : 'Tryb Ciemny';
+      btn.innerHTML = document.body.classList.contains('dark') ? '☀️ Tryb Jasny' : '🌘 Tryb Ciemny';
     }
 
+    // Submenu „O mnie”
     const linkOMnie = document.getElementById('menuO-mnie');
     const submenu = document.getElementById('submenu');
 
