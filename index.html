@@ -132,11 +132,14 @@
       align-items: center;
       gap: 1rem;
       margin-bottom: 3rem;
+      text-align: center;
     }
 
     .about img {
       width: 250px;
       height: 250px;
+      max-width: 100%;
+      max-height: 100%;
       border-radius: 50%;
       object-fit: cover;
       object-position: 50% 30%;
@@ -193,8 +196,9 @@
         justify-content: center;
       }
 
-      .about { text-align: center; }
-      .about img { margin-bottom: 1rem; }
+      .about img {
+        margin-bottom: 1rem;
+      }
     }
   </style>
 </head>
@@ -223,10 +227,10 @@
   <div class="container">
     <section id="about" class="about scroll">
       <h2 class="section-title">O mnie</h2>
+      <!-- Upewnij się, że avatar_fixed.png jest w tym samym folderze co ten plik HTML -->
       <img src="avatar_fixed.png" alt="Moje zdjęcie" />
       <p>
         Nazywam się Jacek Grodnicki, urodziłem się w 1979 roku – w czasach, gdy w Polsce komputery były jeszcze czymś niemal magicznym...
-        <!-- Pełna treść „O mnie” tutaj -->
       </p>
     </section>
   </div>
