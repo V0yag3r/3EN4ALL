@@ -20,17 +20,11 @@
       transition: background-color 0.5s ease, color 0.5s ease;
     }
 
-    body.dark {
-      background-color: #121212;
-      color: #e0e0e0;
-    }
-
     header {
       background: #1a1a1a;
       color: white;
       padding: 2rem;
       text-align: center;
-      transition: background-color 0.5s ease, color 0.5s ease;
     }
 
     nav {
@@ -40,7 +34,6 @@
       flex-wrap: wrap;
       padding: 1rem;
       position: relative;
-      transition: background-color 0.5s ease;
     }
 
     .nav-links {
@@ -101,7 +94,7 @@
 
     .nav-buttons button {
       font-family: 'Orbitron', monospace;
-      background-color: #333;
+      background-color: #1c1c1c;
       border: 1px solid #555;
       color: #f1f1f1;
       font-size: 0.9rem;
@@ -112,7 +105,7 @@
     }
 
     .nav-buttons button:hover {
-      background-color: #444;
+      background-color: #333;
       transform: scale(1.02);
     }
 
@@ -152,7 +145,6 @@
     }
 
     .about-text {
-      /* Kolor będzie wymuszony poniżej */
     }
 
     .post {
@@ -162,15 +154,6 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       margin-bottom: 2rem;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    body.dark .post {
-      background-color: #1f1f1f;
-      color: #e8e8e8;
-    }
-
-    body.dark .post p {
-      color: #ccc;
     }
 
     .post:hover {
@@ -183,22 +166,11 @@
       padding: 1.5rem;
       background-color: #f1f1f1;
       color: #777;
-      transition: background-color 0.5s ease, color 0.5s ease;
-    }
-
-    body.dark footer {
-      background-color: #1a1a1a;
-      color: #999;
     }
 
     /* Wymuszenie czarnego koloru niezależnie od trybu */
     body .about .section-title,
     body .about .about-text {
-      color: #000;
-    }
-
-    body.dark .about .section-title,
-    body.dark .about .about-text {
       color: #000;
     }
 
@@ -251,7 +223,6 @@
     </div>
     <div class="nav-buttons">
       <button onclick="zmienTlo()">Zmień tło</button>
-      <button id="trybBtn" onclick="toggleDarkMode()">Tryb Ciemny</button>
     </div>
   </nav>
 
@@ -269,18 +240,9 @@
 
   <script>
     function zmienTlo() {
-      const kolory = ['#f7f9fc', '#eeeeee', '#dfe6e9', '#cfd8dc', '#eceff1'];
+      const kolory = ['#dfe6e9', '#cfd8dc', '#b0bec5', '#90a4ae', '#78909c'];
       const losowyKolor = kolory[Math.floor(Math.random() * kolory.length)];
       document.body.style.backgroundColor = losowyKolor;
-    }
-
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark');
-      const btn = document.getElementById('trybBtn');
-      btn.textContent = document.body.classList.contains('dark') ? 'Tryb Jasny' : 'Tryb Ciemny';
-
-      // Zamknij submenu po zmianie trybu
-      document.getElementById('submenu').style.display = 'none';
     }
 
     const linkOMnie = document.getElementById('menuO-mnie');
