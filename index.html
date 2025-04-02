@@ -40,6 +40,7 @@
       display: flex;
       gap: 1.5rem;
       margin-left: 20%;
+      position: relative;
     }
 
     nav a {
@@ -49,6 +50,7 @@
       font-size: 1rem;
       transition: opacity 0.3s ease, transform 0.3s ease;
       cursor: pointer;
+      position: relative;
     }
 
     nav a:hover {
@@ -59,14 +61,13 @@
     .submenu {
       display: none;
       position: absolute;
-      top: 3.5rem;
-      left: 20%;
+      top: 2.2rem;
+      left: 0;
       background: #1e1e1e;
       border: 1px solid #444;
       padding: 0.5rem 1rem;
       border-radius: 6px;
       z-index: 10;
-      animation: fadeIn 0.3s ease;
     }
 
     .submenu a {
@@ -81,9 +82,13 @@
       text-decoration: underline;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-5px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Pokaz submenu przy najechaniu */
+    .menu-hover {
+      position: relative;
+    }
+
+    .menu-hover:hover .submenu {
+      display: block;
     }
 
     .nav-buttons {
@@ -144,9 +149,6 @@
       background-color: #f0f0f0;
     }
 
-    .about-text {
-    }
-
     .post {
       background-color: white;
       padding: 1.5rem;
@@ -168,7 +170,7 @@
       color: #777;
     }
 
-    /* Wymuszenie czarnego koloru niezależnie od trybu */
+    /* Tekst w sekcji O mnie zawsze czarny */
     body .about .section-title,
     body .about .about-text {
       color: #000;
@@ -213,13 +215,14 @@
 
   <nav>
     <div class="nav-links">
-      <a id="menuO-mnie">O mnie ▼</a>
+      <div class="menu-hover">
+        <a>O mnie ▼</a>
+        <div class="submenu">
+          <a href="zainteresowania.html">Więcej</a>
+        </div>
+      </div>
       <a href="#blog">Wpisy</a>
       <a href="#contact">Kontakt</a>
-    </div>
-    <div id="submenu" class="submenu">
-      <a href="#about">O mnie (na stronie)</a>
-      <a href="zainteresowania.html">Więcej o zainteresowaniach</a>
     </div>
     <div class="nav-buttons">
       <button onclick="zmienTlo()">Zmień tło</button>
@@ -244,19 +247,6 @@
       const losowyKolor = kolory[Math.floor(Math.random() * kolory.length)];
       document.body.style.backgroundColor = losowyKolor;
     }
-
-    const linkOMnie = document.getElementById('menuO-mnie');
-    const submenu = document.getElementById('submenu');
-
-    linkOMnie.addEventListener('click', () => {
-      submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!linkOMnie.contains(e.target) && !submenu.contains(e.target)) {
-        submenu.style.display = 'none';
-      }
-    });
   </script>
 
 </body>
