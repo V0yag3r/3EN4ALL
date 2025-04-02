@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mój Blog – Nauka i Technologia</title>
-
-  <!-- Orbitron from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-
   <style>
     * { box-sizing: border-box; }
 
@@ -35,9 +32,10 @@
     nav {
       background-color: #2a2a2a;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       flex-wrap: wrap;
       padding: 1rem;
+      position: relative;
     }
 
     nav a {
@@ -47,11 +45,43 @@
       font-size: 1rem;
       margin-right: 1.5rem;
       transition: opacity 0.3s ease, transform 0.3s ease;
+      position: relative;
+      cursor: pointer;
     }
 
     nav a:hover {
       opacity: 0.7;
       transform: scale(1.05);
+    }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      top: 3.5rem;
+      left: 1rem;
+      background: #1e1e1e;
+      border: 1px solid #444;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      z-index: 10;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .submenu a {
+      display: block;
+      color: #a0e0ff;
+      margin: 0.3rem 0;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    .submenu a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .nav-buttons {
@@ -79,101 +109,21 @@
       background-color: #444;
       transform: scale(1.02);
     }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 2rem;
-    }
-
-    .section-title {
-      font-size: 1.6rem;
-      border-bottom: 2px solid #007bff;
-      padding-bottom: 0.3rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .about {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 3rem;
-    }
-
-    .about img {
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      border: 3px solid #e0e0e0;
-      background-color: #f0f0f0;
-    }
-
-    .post {
-      background-color: white;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      margin-bottom: 2rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    body.dark .post {
-      background-color: #1f1f1f;
-    }
-
-    .post:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background-color: #f1f1f1;
-      color: #777;
-    }
-
-    body.dark footer {
-      background-color: #1a1a1a;
-      color: #999;
-    }
-
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-buttons {
-        margin-left: 0;
-        margin-top: 1rem;
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .nav-buttons button {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .about { text-align: center; }
-      .about img { margin-bottom: 1rem; }
-    }
   </style>
 </head>
-
 <body>
+
   <header>
     <h1>Mój Blog</h1>
     <p>Informatyka, Fizyka, Wszechświat, Technologie</p>
   </header>
 
   <nav>
-    <a href="#about">O mnie</a>
+    <a id="menuO mnie">O mnie</a>
+    <div id="submenu" class="submenu">
+      <a href="#about">O mnie (na stronie)</a>
+      <a href="zainteresowania.html">Więcej o zainteresowaniach</a>
+    </div>
     <a href="#blog">Wpisy</a>
     <a href="#contact">Kontakt</a>
     <div class="nav-buttons">
@@ -183,11 +133,11 @@
   </nav>
 
   <div class="container">
+    <!-- Reszta bloga -->
     <section id="about" class="about scroll">
       <h2 class="section-title">O mnie</h2>
       <img src="avatar_fixed.png" alt="Moje zdjęcie" />
-      <p>Nazywam się Jacek Grodnicki, urodziłem się w 1979 roku – w czasach, gdy w Polsce komputery były jeszcze czymś niemal magicznym. Fascynacja technologią i nauką towarzyszy mi od zawsze...
-      </p>
+      <p>... Twój tekst "O mnie" tutaj ...</p>
     </section>
   </div>
 
@@ -202,12 +152,24 @@
     function toggleDarkMode() {
       document.body.classList.toggle('dark');
       const btn = document.getElementById('trybBtn');
-      if (document.body.classList.contains('dark')) {
-        btn.innerHTML = '☀️ Tryb Jasny';
-      } else {
-        btn.innerHTML = '🌘 Tryb Ciemny';
-      }
+      btn.innerHTML = document.body.classList.contains('dark') ? '☀️ Tryb Jasny' : '🌘 Tryb Ciemny';
     }
+
+    // Obsługa rozwijanego menu
+    const linkOMnie = document.getElementById('menuO mnie');
+    const submenu = document.getElementById('submenu');
+
+    linkOMnie.addEventListener('click', () => {
+      submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Opcjonalnie: zamykanie submenu po kliknięciu gdziekolwiek indziej
+    document.addEventListener('click', (e) => {
+      if (!linkOMnie.contains(e.target) && !submenu.contains(e.target)) {
+        submenu.style.display = 'none';
+      }
+    });
   </script>
+
 </body>
 </html>
