@@ -127,6 +127,7 @@
       border-bottom: 2px solid #007bff;
       padding-bottom: 0.3rem;
       margin-bottom: 1.5rem;
+      color: #000 !important; /* ZAWSZE czarny */
     }
 
     .about {
@@ -151,6 +152,10 @@
       background-color: #f0f0f0;
     }
 
+    .about-text {
+      color: #000 !important; /* ZAWSZE czarny */
+    }
+
     .post {
       background-color: white;
       padding: 1.5rem;
@@ -165,8 +170,7 @@
       color: #e8e8e8;
     }
 
-    body.dark .post p,
-    body.dark .about p {
+    body.dark .post p {
       color: #ccc;
     }
 
@@ -245,7 +249,7 @@
     <section id="about" class="about scroll">
       <h2 class="section-title">O mnie</h2>
       <img src="avatar_fixed.png" alt="Zdjęcie Jacka Grodnickiego" />
-      <p>
+      <p class="about-text">
         Nazywam się Jacek Grodnicki, urodziłem się w 1979 roku – w czasach, gdy w Polsce komputery były jeszcze czymś niemal magicznym...
       </p>
     </section>
