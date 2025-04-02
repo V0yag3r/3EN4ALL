@@ -33,11 +33,6 @@
       transition: background-color 0.5s ease, color 0.5s ease;
     }
 
-    body:not(.dark) header {
-      background: #1a1a1a;
-      color: white;
-    }
-
     nav {
       background-color: #2a2a2a;
       display: flex;
@@ -48,14 +43,18 @@
       transition: background-color 0.5s ease;
     }
 
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-left: 20%;
+    }
+
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
       font-size: 1rem;
-      margin-right: 1.5rem;
       transition: opacity 0.3s ease, transform 0.3s ease;
-      position: relative;
       cursor: pointer;
     }
 
@@ -68,7 +67,7 @@
       display: none;
       position: absolute;
       top: 3.5rem;
-      left: 1rem;
+      left: 20%;
       background: #1e1e1e;
       border: 1px solid #444;
       padding: 0.5rem 1rem;
@@ -102,9 +101,6 @@
 
     .nav-buttons button {
       font-family: 'Orbitron', monospace;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
       background-color: #333;
       border: 1px solid #555;
       color: #f1f1f1;
@@ -192,6 +188,11 @@
         align-items: flex-start;
       }
 
+      .nav-links {
+        margin-left: 0;
+        flex-direction: column;
+      }
+
       .nav-buttons {
         margin-left: 0;
         margin-top: 1rem;
@@ -219,13 +220,15 @@
   </header>
 
   <nav>
-    <a id="menuO-mnie">O mnie</a>
+    <div class="nav-links">
+      <a id="menuO-mnie">O mnie</a>
+      <a href="#blog">Wpisy</a>
+      <a href="#contact">Kontakt</a>
+    </div>
     <div id="submenu" class="submenu">
       <a href="#about">O mnie (na stronie)</a>
       <a href="zainteresowania.html">Więcej o zainteresowaniach</a>
     </div>
-    <a href="#blog">Wpisy</a>
-    <a href="#contact">Kontakt</a>
     <div class="nav-buttons">
       <button onclick="zmienTlo()">Zmień tło</button>
       <button id="trybBtn" onclick="toggleDarkMode()">Tryb Ciemny</button>
@@ -245,29 +248,18 @@
   <footer>&copy; 2025 Mój Blog – Wszystkie prawa zastrzeżone.</footer>
 
   <script>
-    // Funkcja zmiany tła całej strony
     function zmienTlo() {
       const kolory = ['#f7f9fc', '#eeeeee', '#dfe6e9', '#cfd8dc', '#eceff1'];
       const losowyKolor = kolory[Math.floor(Math.random() * kolory.length)];
       document.body.style.backgroundColor = losowyKolor;
-
-      // Dodatkowo zmień tło dla sekcji, jeśli potrzeba:
-      const posty = document.querySelectorAll('.post');
-      posty.forEach(post => {
-        if (!document.body.classList.contains('dark')) {
-          post.style.backgroundColor = '#ffffff';
-        }
-      });
     }
 
-    // Tryb ciemny
     function toggleDarkMode() {
       document.body.classList.toggle('dark');
       const btn = document.getElementById('trybBtn');
       btn.textContent = document.body.classList.contains('dark') ? 'Tryb Jasny' : 'Tryb Ciemny';
     }
 
-    // Submenu „O mnie”
     const linkOMnie = document.getElementById('menuO-mnie');
     const submenu = document.getElementById('submenu');
 
