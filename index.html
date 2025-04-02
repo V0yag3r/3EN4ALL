@@ -8,13 +8,14 @@
     :root {
       --text-light: #111827;
       --text-dark: #f3f4f6;
+      --bg-light: #f3f4f6;
       --bg-dark: #121212;
     }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f3f4f6;
+      background-color: var(--bg-light);
       color: var(--text-light);
       transition: background-color 0.3s, color 0.3s;
     }
@@ -24,13 +25,22 @@
       color: var(--text-dark);
     }
 
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
     header {
       background-color: inherit;
-      padding: 1rem 2rem;
+      border-bottom: 1px solid #ccc;
+      padding: 1rem 0;
+    }
+
+    .topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #ccc;
       flex-wrap: wrap;
     }
 
@@ -80,13 +90,11 @@
     }
 
     main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 2rem;
+      padding: 2rem 0;
     }
 
     @media (max-width: 768px) {
-      header {
+      .topbar {
         flex-direction: column;
         align-items: flex-start;
       }
@@ -94,23 +102,30 @@
       .controls {
         margin-top: 1rem;
       }
+
+      nav {
+        margin-bottom: 1rem;
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
-    <nav>
-      <a href="#omnie">O mnie</a>
-      <a href="#wpisy">Wpisy</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
-    <div class="controls">
-      <button id="change-background">Zmień tło</button>
-      <button id="toggle-dark">Tryb Ciemny</button>
+    <div class="container topbar">
+      <nav>
+        <a href="#omnie">O mnie</a>
+        <a href="#wpisy">Wpisy</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <div class="controls">
+        <button id="change-background">Zmień tło</button>
+        <button id="toggle-dark">Tryb Ciemny</button>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main class="container">
     <h1>Witaj na moim blogu</h1>
     <p>
       To jest miejsce, gdzie dzielę się pasją do informatyki, fizyki i technologii.
@@ -120,11 +135,11 @@
 
   <script>
     const pastelColors = [
-      "#f3f4f6",  // jasny szaro-niebieski (domyślny)
+      "#f3f4f6",  // szaro-niebieski
       "#e0e7ff",  // pastelowy niebieski
-      "#fef9c3",  // delikatny żółty
-      "#dcfce7",  // jasna zieleń
-      "#fff1f2"   // blady róż
+      "#fef9c3",  // żółty
+      "#dcfce7",  // zieleń
+      "#fff1f2"   // róż
     ];
 
     let currentColor = 0;
