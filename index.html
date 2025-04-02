@@ -3,87 +3,78 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mój Blog – Nauka i Technologia</title>
-
+  <title>Blog</title>
   <style>
+    /* Podstawowe reset/zera marginesów */
     body {
       margin: 0;
       font-family: sans-serif;
       background-color: #ffffff;
       color: #000000;
-      transition: background-color 0.3s, color 0.3s;
+      transition: background-color 0.3s, color 0.3s; /* płynne przejście kolorów */
     }
-
-    body.dark-mode {
-      background-color: #121212;
-      color: #eeeeee;
-    }
-
-    .topbar {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
+    /* Nawigacja */
     nav.nav-links {
       margin-left: 20%;
-      padding: 1rem;
     }
-
     nav.nav-links ul {
       list-style: none;
       margin: 0;
       padding: 0;
     }
-
     nav.nav-links li {
       display: inline-block;
       margin-right: 15px;
     }
-
     nav.nav-links a {
       text-decoration: none;
-      color: inherit;
+      color: inherit; /* dziedziczy kolor tekstu (ciemny lub jasny w trybie ciemnym) */
       font-weight: bold;
     }
-
+    /* Sekcja przycisków sterujących */
     .controls {
       margin-left: 20%;
-      padding: 1rem;
+      /* domyślnie blok poniżej nawigacji */
     }
-
     .controls button {
       font-size: 1em;
       padding: 0.5em 1em;
       cursor: pointer;
-      margin-right: 10px;
     }
-
-    main {
-      margin-left: 20%;
-      padding: 1rem;
+    .controls button + button {
+      margin-left: 10px; /* odstęp między dwoma przyciskami obok siebie */
     }
-
+    /* Tryb ciemny (Dark Mode) – zmiana kolorów w ciemnym motywie */
+    body.dark-mode {
+      background-color: #222222 !important;
+      color: #dddddd;
+    }
+    body.dark-mode a {
+      color: #ffffff;
+    }
+    /* Responsywność: na mniejszych ekranach elementy w kolumnie */
     @media (max-width: 600px) {
       .topbar {
         display: block;
       }
-
-      nav.nav-links,
-      .controls,
-      main {
-        margin-left: 5%;
+      .controls {
+        margin-top: 10px; /* odstęp od spodu menu nawigacyjnego */
       }
-
-      .controls button {
-        width: 100%;
-        margin: 0.3rem 0;
+    }
+    /* Na większych ekranach: elementy w wierszu (obok siebie) */
+    @media (min-width: 601px) {
+      .topbar {
+        display: flex;
+        align-items: center;
+        /* justify-content: flex-start; domyślnie elementy wyrównane do lewej */
       }
+      /* (Obie sekcje nadal mają margin-left: 20%, więc zachowują odsunięcie od lewej krawędzi) */
     }
   </style>
 </head>
-
 <body>
   <header class="topbar">
+    <!-- Nawigacja -->
     <nav class="nav-links">
       <ul>
         <li><a href="#omnie">O mnie</a></li>
@@ -91,40 +82,37 @@
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
     </nav>
-
+    <!-- Sekcja przycisków sterujących (tło i tryb ciemny) -->
     <div class="controls">
       <button id="change-background">Zmień tło</button>
       <button id="dark-mode-toggle">Tryb Ciemny</button>
     </div>
   </header>
 
+  <!-- Główna zawartość strony (przykładowa sekcja bloga) -->
   <main>
     <h1>Witaj na moim blogu</h1>
-    <p>To jest przykładowy wpis. Tutaj może być ciekawa treść o technologii, fizyce lub kosmosie.</p>
+    <p>To jest przykładowy wpis na blogu. Tutaj znajduje się treść posta.</p>
   </main>
 
   <script>
-    const pastelColors = [
-      "#f3f4f6", // jasny szaro-niebieski
-      "#e0e7ff", // pastelowy niebieski
-      "#fef9c3", // delikatny żółty
-      "#dcfce7", // bardzo jasna zieleń
-      "#fff1f2"  // blady róż
-    ];
+    // Funkcja obsługująca zmianę tła strony
+    (function() {
+      const backgrounds = ["#ffffff", "#e0f7fa", "#fff8e1", "#e8f5e9"]; // przykładowe kolory tła
+      let currentIndex = 0;
+      document.getElementById("change-background").addEventListener("click", function() {
+        // Ustaw kolejny kolor tła z tablicy
+        currentIndex = (currentIndex + 1) % backgrounds.length;
+        document.body.style.backgroundColor = backgrounds[currentIndex];
+        // Jeśli włączony jest tryb ciemny, wyłącz go, aby kolory tła były widoczne (opcjonalne)
+        if (document.body.classList.contains("dark-mode")) {
+          document.body.classList.remove("dark-mode");
+        }
+      });
+    })();
 
-    let currentColor = 0;
-
-    document.getElementById("change-background").addEventListener("click", () => {
-      currentColor = (currentColor + 1) % pastelColors.length;
-      document.body.style.backgroundColor = pastelColors[currentColor];
-
-      // Dla lepszej widoczności w jasnym trybie
-      if (!document.body.classList.contains('dark-mode')) {
-        document.body.style.color = "#000000";
-      }
-    });
-
-    document.getElementById("dark-mode-toggle").addEventListener("click", () => {
+    // Funkcja obsługująca przełączanie trybu ciemnego
+    document.getElementById("dark-mode-toggle").addEventListener("click", function() {
       document.body.classList.toggle("dark-mode");
     });
   </script>
