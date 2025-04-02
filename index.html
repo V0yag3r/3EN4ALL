@@ -25,12 +25,13 @@
     }
 
     header {
+      background-color: inherit;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       border-bottom: 1px solid #ccc;
+      flex-wrap: wrap;
     }
 
     nav {
@@ -40,8 +41,8 @@
 
     nav a {
       text-decoration: none;
-      color: inherit;
       font-weight: bold;
+      color: inherit;
       font-size: 1rem;
     }
 
@@ -93,14 +94,9 @@
       .controls {
         margin-top: 1rem;
       }
-
-      nav {
-        margin-bottom: 1rem;
-      }
     }
   </style>
 </head>
-
 <body>
   <header>
     <nav>
@@ -117,36 +113,35 @@
   <main>
     <h1>Witaj na moim blogu</h1>
     <p>
-      To jest miejsce, gdzie dzielę się pasją do informatyki, fizyki i technologii.  
-      Zapraszam do lektury moich wpisów oraz odkrywania świata nauki!
+      To jest miejsce, gdzie dzielę się pasją do informatyki, fizyki i technologii.
+      Zapraszam do lektury moich wpisów oraz odkrywania nauki!
     </p>
   </main>
 
   <script>
     const pastelColors = [
-      "#f3f4f6",  // domyślny
-      "#e0e7ff",  // niebieski
-      "#fef9c3",  // żółty
-      "#dcfce7",  // zieleń
-      "#fff1f2"   // róż
+      "#f3f4f6",  // jasny szaro-niebieski (domyślny)
+      "#e0e7ff",  // pastelowy niebieski
+      "#fef9c3",  // delikatny żółty
+      "#dcfce7",  // jasna zieleń
+      "#fff1f2"   // blady róż
     ];
 
     let currentColor = 0;
     const body = document.body;
-    const changeBtn = document.getElementById("change-background");
-    const darkBtn = document.getElementById("toggle-dark");
+    const changeBgBtn = document.getElementById("change-background");
+    const darkModeBtn = document.getElementById("toggle-dark");
 
-    changeBtn.addEventListener("click", () => {
-      if (body.classList.contains("dark-mode")) return;
-
+    changeBgBtn.addEventListener("click", () => {
       currentColor = (currentColor + 1) % pastelColors.length;
-      body.style.backgroundColor = pastelColors[currentColor];
-      body.style.color = "#111827";
+      if (!body.classList.contains("dark-mode")) {
+        body.style.backgroundColor = pastelColors[currentColor];
+        body.style.color = "#111827";
+      }
     });
 
-    darkBtn.addEventListener("click", () => {
+    darkModeBtn.addEventListener("click", () => {
       body.classList.toggle("dark-mode");
-
       if (body.classList.contains("dark-mode")) {
         body.style.backgroundColor = "#121212";
         body.style.color = "#f3f4f6";
