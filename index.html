@@ -5,15 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mój Blog – Nauka i Technologia</title>
   <style>
-    * { box-sizing: border-box; }
+    /* Import czcionki TechNoir */
+    @font-face {
+      font-family: 'TechNoir';
+      src: url('TechNoir.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'TechNoir', sans-serif;
       background-color: #f7f9fc;
       color: #333;
       line-height: 1.6;
       transition: background-color 0.5s ease, color 0.5s ease;
     }
+
     body.dark {
       background-color: #121212;
       color: #e0e0e0;
@@ -55,7 +67,7 @@
     }
 
     .nav-buttons button {
-      font-family: monospace;
+      font-family: 'TechNoir', monospace;
       display: flex;
       align-items: center;
       gap: 0.5rem;
