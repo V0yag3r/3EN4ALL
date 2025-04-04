@@ -219,7 +219,7 @@
       <div class="menu-hover">
         <a href="#" onclick="event.preventDefault()">O mnie ▼</a>
         <div class="submenu">
-          <a href="#more-about" onclick="pokazWiecej(event, this)">Więcej</a>
+          <a href="#more-about" onclick="pokazWiecej(event)">Więcej</a>
         </div>
       </div>
       <a href="#" onclick="event.preventDefault()">Wpisy</a>
@@ -242,38 +242,41 @@
     <section id="more-about" class="post">
       <h3 class="section-title">Więcej o mnie</h3>
       <p>
-        Cześć! Mam 46 lat i od zawsze fascynuję się światem technologii i nauki. Informatyka, nowe technologie, a także fizyka – szczególnie fizyka kwantowa – to moje pasje.
+        Cześć! Mam 46 lat i od zawsze fascynuję się światem technologii i nauki. Informatyka, nowe technologie, a także fizyka – szczególnie fizyka kwantowa – to moje pasje. Informatyka interesowała mnie od zawsze, a urodziłem się w 1979 roku – wtedy komputery to była absolutna nowość w Polsce.
       </p>
       <p>
-        Zaczynałem od Atari, Commodore, Amigi 1200 – potem był już mój pierwszy PC. Programowałem w BASIC-u i jako dzieciak tworzyłem pierwsze „programy” – kalkulatory, zgadywanki...
+        Zaczynałem od Atari, Commodore, Amigi 1200 – potem był już mój pierwszy PC. Programowałem w BASIC-u i jako dzieciak tworzyłem pierwsze „programy” – kalkulatory, zgadywanki... (tak, nadużywałem polecenia <code>GOTO</code> 😄).
       </p>
       <p>
-        Nowoczesne osiągnięcia techniczne fascynowały mnie od zawsze. Pochłaniałem filmy sci-fi i książki – szczególnie Lema i Clarke’a („Miasto i gwiazdy”!). Rozbierałem sprzęty ze śmietników...
+        Nowoczesne osiągnięcia techniczne fascynowały mnie od zawsze. Pochłaniałem filmy sci-fi i książki – szczególnie Lema i Artura C. Clarke’a („Miasto i gwiazdy”!). Rozbierałem sprzęty ze śmietników, żeby zrozumieć jak działają. Wiedza była dla mnie przygodą.
       </p>
       <p>
-        Uwielbiam zgłębiać tajemnice wszechświata, zadawać pytania i szukać odpowiedzi.
+        Czasami interesowały mnie rzeczy, które dla moich rówieśników były zupełnie nieistotne. Uwielbiam zgłębiać tajemnice wszechświata, zadawać pytania i szukać odpowiedzi. Interesuje mnie świat nie tylko przyziemny (praca, nauka, obowiązki), ale też to, jak skonstruowana jest rzeczywistość, w której żyjemy.
       </p>
     </section>
 
+    <!-- NOWE WPISY -->
     <section class="post">
       <h2 class="section-title">Jak zaczęła się moja przygoda z komputerami</h2>
       <p>
-        Miałem może 10 lat, kiedy po raz pierwszy zobaczyłem Atari 800XL. Dźwięki z gier, klikanie klawiszy i ten niepowtarzalny zapach sprzętu...
+        Miałem może 10 lat, kiedy po raz pierwszy zobaczyłem Atari 800XL. Dźwięki z gier, klikanie klawiszy i ten niepowtarzalny zapach sprzętu elektronicznego – to było jak wejście do innego świata.
       </p>
       <p>
-        Z pomocą kuzyna pisałem pierwsze linijki kodu w BASIC-u. Komputery stały się moim oknem na świat.
+        Niedługo później, z pomocą starszego kuzyna, zacząłem pisać swoje pierwsze linijki kodu w BASIC-u. Radość, gdy udało mi się stworzyć prosty kalkulator, była ogromna! Komputery stały się moim oknem na świat – miejscem eksperymentów, zabawy i nauki.
       </p>
     </section>
 
     <section class="post">
       <h2 class="section-title">Dlaczego kocham fizykę (a szczególnie fizykę kwantową)</h2>
       <p>
-        Fizyka nie zadowala się prostymi odpowiedziami – szuka "dlaczego". Szczególnie fascynuje mnie fizyka kwantowa: dualizm, splątanie, superpozycja...
+        Fizyka zawsze mnie fascynowała, bo nie zadowala się powierzchowną odpowiedzią. Szuka "dlaczego", a nie tylko "jak". Szczególnie fizyka kwantowa wydaje się jak z innego wymiaru – cząstki będące jednocześnie w dwóch miejscach, splątanie kwantowe, dualizm korpuskularno-falowy... brzmi jak science fiction, a to przecież rzeczywistość!
       </p>
       <p>
-        Dla mnie fizyka to sposób patrzenia na świat. Pokazuje, że rzeczywistość jest głębsza, niż się wydaje.
+        Dla mnie fizyka to coś więcej niż przedmiot – to sposób patrzenia na świat. Dzięki niej wiem, że nasza codzienność to tylko wierzchołek góry lodowej, a pod spodem kryją się niesamowite prawa natury, które wciąż odkrywamy.
       </p>
     </section>
+    <!-- KONIEC WPISÓW -->
+
   </div>
 
   <footer>&copy; 2025 Mój Blog – Wszystkie prawa zastrzeżone.</footer>
@@ -288,15 +291,10 @@
       document.body.style.backgroundColor = losowyKolor;
     }
 
-    function pokazWiecej(event, el) {
+    function pokazWiecej(event) {
       event.preventDefault();
-      const sekcja = document.getElementById("more-about");
-      const widoczna = sekcja.style.display === "block";
-      sekcja.style.display = widoczna ? "none" : "block";
-      el.textContent = widoczna ? "Więcej" : "Ukryj";
-      if (!widoczna) {
-        sekcja.scrollIntoView({ behavior: "smooth" });
-      }
+      document.getElementById("more-about").style.display = "block";
+      document.getElementById("more-about").scrollIntoView({ behavior: "smooth" });
     }
   </script>
 
