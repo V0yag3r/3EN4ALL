@@ -1,3 +1,4 @@
+// Efekt cząsteczek
 particlesJS('particles-js', {
   particles: {
     number: { value: 80, density: { enable: true, value_area: 800 } },
@@ -36,6 +37,7 @@ particlesJS('particles-js', {
   retina_detect: true
 });
 
+// Tekst po polsku/angielsku
 const content = {
   pl: `
     <h2>Kim jestem?</h2>
@@ -59,3 +61,25 @@ langSwitcher.addEventListener("change", (e) => {
   updateLanguage(e.target.value);
 });
 updateLanguage("pl");
+
+// 🔁 Animacja tła
+const backgrounds = [
+  "images/tesla.png",
+  "images/lazik.jpg",
+  "images/serwerLaka.png"
+];
+let bgIndex = 0;
+
+const styleBg = document.createElement("style");
+document.head.appendChild(styleBg);
+
+function updateBackground() {
+  styleBg.innerHTML = `
+    body::before {
+      background-image: url('${backgrounds[bgIndex]}');
+    }
+  `;
+  bgIndex = (bgIndex + 1) % backgrounds.length;
+}
+updateBackground();
+setInterval(updateBackground, 8000); // zmiana co 8 sek
