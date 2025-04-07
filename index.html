@@ -112,20 +112,19 @@
     © 2025 | Blog stworzony przez pasjonata nauki i technologii – Jacek Grodnicki
   </footer>
 
- <script>
-  const backgrounds = [
-    'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80', // natura
-    'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80', // technologia
-    'https://cdn.pixabay.com/photo/2017/08/30/07/52/artificial-intelligence-2693062_1280.jpg'        // fizyka/informacja
-  ];
-  let i = 0;
-  function zmienTlo() {
-    document.body.style.backgroundImage = `url('${backgrounds[i]}')`;
-    i = (i + 1) % backgrounds.length;
-  }
-  setInterval(zmienTlo, 8000);
-  zmienTlo();
-</script>
-
+  <script>
+    const backgrounds = [
+      'https://mars.nasa.gov/system/resources/detail_files/25692_PIA25952-FigureA-web.jpg', // Mars
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80', // Technologia
+      'https://cdn.pixabay.com/photo/2020/02/25/07/08/robot-4880081_1280.jpg' // Robot AI
+    ];
+    let i = 0;
+    function zmienTlo() {
+      document.body.style.backgroundImage = `url('${backgrounds[i]}')`;
+      i = (i + 1) % backgrounds.length;
+    }
+    setInterval(zmienTlo, 8000);
+    zmienTlo();
+  </script>
 </body>
 </html>
