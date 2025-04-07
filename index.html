@@ -6,12 +6,16 @@
   <title>Blog – Fizyka, IT i Wszechświat</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100%;
+    }
     body {
       font-family: Arial, sans-serif;
       background-size: cover;
       background-position: center;
       transition: background-image 1s ease-in-out;
-      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       color: white;
     }
     nav {
@@ -48,6 +52,7 @@
       align-items: center;
       padding: 2em;
       text-align: center;
+      flex-grow: 1;
     }
     .main img {
       width: 220px;
@@ -67,7 +72,6 @@
       background: rgba(0, 0, 0, 0.7);
       text-align: center;
       padding: 1em;
-      margin-top: 2em;
       font-size: 0.8em;
     }
     @media (min-width: 768px) {
@@ -94,34 +98,33 @@
   </nav>
 
   <section class="main">
-    <img src="https://via.placeholder.com/220x300.png?text=Twoje+zdjecie" alt="Autor bloga" />
+    <img src="https://via.placeholder.com/220x300.png?text=Jacek+Grodnicki" alt="Jacek Grodnicki" />
     <div class="card">
       <h2>Kim jestem?</h2>
       <p>
-        Jestem pasjonatem fizyki kwantowej, IT i tajemnic Wszechświata.
+        Nazywam się <strong>Jacek Grodnicki</strong>. Jestem pasjonatem fizyki kwantowej, informatyki oraz tajemnic Wszechświata.
         Łączę naukę z nowoczesną technologią, przekazując wiedzę w sposób przystępny, ciekawy i niekonwencjonalny.
       </p>
     </div>
   </section>
 
   <footer>
-    © <span id="year"></span> | Blog stworzony przez pasjonata nauki i technologii
+    © 2025 | Blog stworzony przez pasjonata nauki i technologii – Jacek Grodnicki
   </footer>
 
   <script>
-    const tła = [
-      'https://images.unsplash.com/photo-1475666675596-cca2035b3d79?auto=format&fit=crop&w=1500&q=80', // kosmos
+    const backgrounds = [
+      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80', // natura
       'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1500&q=80', // technologia
       'https://images.unsplash.com/photo-1607082349567-63c1708f2cdd?auto=format&fit=crop&w=1500&q=80'  // fizyka
     ];
     let i = 0;
     function zmienTlo() {
-      document.body.style.backgroundImage = `url('${tła[i]}')`;
-      i = (i + 1) % tła.length;
+      document.body.style.backgroundImage = `url('${backgrounds[i]}')`;
+      i = (i + 1) % backgrounds.length;
     }
-    setInterval(zmienTlo, 7000);
+    setInterval(zmienTlo, 8000);
     zmienTlo();
-    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
