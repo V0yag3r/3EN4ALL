@@ -58,14 +58,23 @@
       align-items: center;
     }
 
-    /* 📷 Tu dopasowujemy ramkę do naturalnego rozmiaru zdjęcia */
-    .avatar img {
-      max-width: 100%;
-      height: auto;
+    .avatar {
+      width: 220px;
+      height: 220px;
+      overflow: hidden;
       border-radius: 1em;
       border: 4px solid white;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-top: 1.5em;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
     }
 
@@ -92,7 +101,7 @@
         text-align: left;
         gap: 2em;
       }
-      .avatar img {
+      .avatar {
         margin-top: 0;
       }
     }
@@ -130,9 +139,9 @@
 
   <script>
     const backgrounds = [
-      'serwerLaka.png',
-      'lazik.jpg',
-      'tesla.png'
+      'serwerLaka.png', // IT
+      'lazik.jpg',       // Mars
+      'tesla.png'        // Tesla
     ];
     let i = 0;
     function zmienTlo() {
