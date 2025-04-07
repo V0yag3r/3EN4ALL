@@ -74,22 +74,20 @@
       width: 100%;
     }
 
-    .avatar img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 1em;
-      border: 4px solid white;
-      background-color: #222;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-      display: block;
-    }
-
     .card {
       background: rgba(0, 0, 0, 0.6);
       padding: 1.5em;
       border-radius: 1em;
-      max-width: 600px;
       width: 100%;
+      max-width: 600px;
+    }
+
+    .avatar img {
+      display: block;
+      border: 4px solid white;
+      border-radius: 1em;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      background-color: #222;
     }
 
     footer {
@@ -99,7 +97,6 @@
       font-size: 0.8em;
     }
 
-    /* Na większych ekranach — zdjęcie po lewej, tekst po prawej */
     @media (min-width: 768px) {
       .main-content {
         flex-direction: row;
@@ -107,18 +104,17 @@
         text-align: left;
       }
 
+      .card {
+        flex: 1;
+      }
+
       .avatar {
-        width: 300px;
-        flex-shrink: 0;
+        margin-right: 2em;
       }
 
       .avatar img {
-        width: 100%;
+        max-width: 300px;
         height: auto;
-      }
-
-      .card {
-        flex: 1;
       }
     }
   </style>
@@ -136,12 +132,12 @@
 
   <section class="main">
     <div class="main-content">
-      <!-- ZDJĘCIE po lewej stronie -->
+      <!-- 📸 ZDJĘCIE z ramką idealnie dopasowaną -->
       <div class="avatar">
         <img src="avatar_fixed.png" alt="Jacek Grodnicki" />
       </div>
 
-      <!-- TEKST po prawej stronie -->
+      <!-- 📝 TEKST -->
       <div class="card">
         <h2>Kim jestem?</h2>
         <p>
@@ -158,9 +154,9 @@
 
   <script>
     const backgrounds = [
-      'serwerLaka.png', // IT
-      'lazik.jpg',       // Mars
-      'tesla.png'        // Tesla
+      'serwerLaka.png',
+      'lazik.jpg',
+      'tesla.png'
     ];
     let i = 0;
     function zmienTlo() {
