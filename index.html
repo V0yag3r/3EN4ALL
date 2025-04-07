@@ -1,264 +1,68 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mój Blog – Nauka i Technologia</title>
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+export default function Blog() {
+  const [bgIndex, setBgIndex] = useState(0);
+  const backgrounds = [
+    "/backgrounds/space1.jpg",
+    "/backgrounds/tech1.jpg",
+    "/backgrounds/quantum.jpg",
+  ];
 
-  <style>
-    * { box-sizing: border-box; }
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setBgIndex((prev) => (prev + 1) % backgrounds.length);
+    }, 8000);
+    return () => clearInterval(interval);
+  }, []);
 
-    body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background-color: #e6f0f7;
-      color: #333;
-      line-height: 1.6;
-      transition: background-color 0.5s ease, color 0.5s ease;
-    }
+  return (
+    <div
+      className="min-h-screen text-white bg-cover bg-center transition-all duration-1000"
+      style={{ backgroundImage: `url(${backgrounds[bgIndex]})` }}
+    >
+      <nav className="flex justify-between items-center p-6 bg-black/60 shadow-xl">
+        <h1 className="text-3xl font-bold">Blog: Fizyka, IT i Wszechświat</h1>
+        <div className="space-x-4">
+          <Button variant="ghost">O mnie</Button>
+          <Button variant="ghost">Wszechświat</Button>
+          <Button variant="ghost">Fizyka</Button>
+          <Button variant="ghost">IT</Button>
+        </div>
+      </nav>
 
-    body.dark-mode {
-      background-color: #121212;
-      color: #e0e0e0;
-    }
-
-    header {
-      background: #1a1a1a;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    nav {
-      background-color: #2a2a2a;
-      display: flex;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      padding: 1rem;
-      position: relative;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      margin-left: 20%;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      cursor: pointer;
-    }
-
-    nav a:hover {
-      opacity: 0.7;
-      transform: scale(1.05);
-    }
-
-    .nav-buttons {
-      display: flex;
-      gap: 0.5rem;
-      margin-left: auto;
-    }
-
-    .nav-buttons button {
-      font-family: 'Orbitron', monospace;
-      background-color: #1c1c1c;
-      border: 1px solid #555;
-      color: #f1f1f1;
-      font-size: 0.9rem;
-      padding: 0.45rem 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .nav-buttons button:hover {
-      background-color: #333;
-      transform: scale(1.02);
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 2rem;
-    }
-
-    .section-title {
-      font-size: 1.6rem;
-      border-bottom: 2px solid #007bff;
-      padding-bottom: 0.3rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .about {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 3rem;
-      text-align: center;
-    }
-
-    .about-text, .summary-box, .post {
-      background-color: white;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      margin-bottom: 2rem;
-      text-align: left;
-    }
-
-    .summary-box {
-      max-width: 700px;
-      margin: 2rem auto;
-    }
-
-    .about img {
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: 50% 30%;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      border: 3px solid #e0e0e0;
-      background-color: #f0f0f0;
-      cursor: pointer;
-      z-index: 1;
-    }
-
-    #popup-img {
-      display: none;
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      max-width: 500px;
-      width: 95vw;
-      height: auto;
-      z-index: 100;
-      box-shadow: 0 0 20px rgba(0,0,0,0.7);
-      border-radius: 12px;
-      border: 4px solid white;
-    }
-
-    body.dark-mode .post {
-      background-color: #1e1e1e;
-      color: #ddd;
-      border: 1px solid #444;
-    }
-
-    .post:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-
-    #posts-section {
-      display: none;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background-color: #f1f1f1;
-      color: #777;
-    }
-
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        margin-left: 0;
-        flex-direction: column;
-      }
-
-      .nav-buttons {
-        margin-left: 0;
-        margin-top: 1rem;
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .nav-buttons button {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-  </style>
-</head>
-<body onclick="zamknijObraz()">
-  <header>
-    <h1>Mój Blog</h1>
-    <p>Informatyka, Fizyka, Wszechświat, Technologie</p>
-  </header>
-
-  <nav>
-    <div class="nav-links">
-      <a href="#about">O mnie</a>
-      <a href="#" onclick="pokazWpisy(event)">Wpisy</a>
-      <a href="#">Kontakt</a>
-    </div>
-    <div class="nav-buttons">
-      <button onclick="zmienTlo(); event.stopPropagation();">Zmień tło</button>
-      <button onclick="toggleDarkMode(); event.stopPropagation();">Ciemny motyw</button>
-    </div>
-  </nav>
-
-  <div class="container">
-    <section class="summary-box">
-      <p>Pasja do informatyki, fizyki kwantowej oraz eksplorowania wszechświata to coś, co towarzyszy mi od lat. Kocham nowe technologie, naukę i zadawanie pytań, które sięgają głębiej niż tylko codzienność.</p>
-    </section>
-
-    <section id="posts-section">
-      <section class="post">
-        <h2 class="section-title">Nowe trendy w informatyce</h2>
-        <p>Świat informatyki dynamicznie się zmienia. Obecnie na topie są sztuczna inteligencja, uczenie maszynowe, edge computing i rozwój rozwiązań kwantowych. Te technologie zmieniają sposób, w jaki przetwarzamy dane i podejmujemy decyzje.</p>
-        <p>Warto również śledzić rozwój blockchaina, aplikacji bezserwerowych oraz coraz większą integrację AI z codziennymi urządzeniami.</p>
+      <section className="p-10 md:flex gap-10 items-center justify-center">
+        <motion.img
+          src="/me.jpg"
+          alt="Zdjęcie autora"
+          className="rounded-2xl shadow-2xl max-w-sm border-4 border-white"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        />
+        <motion.div
+          className="max-w-xl mt-8 md:mt-0"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <Card className="bg-black/70 text-white">
+            <CardContent className="p-6">
+              <h2 className="text-2xl font-semibold mb-4">Kim jestem?</h2>
+              <p>
+                Jestem pasjonatem fizyki kwantowej, IT i tajemnic Wszechświata.
+                Łączę naukę z nowoczesną technologią, starając się przekazać wiedzę w sposób przystępny, ciekawy i niekonwencjonalny.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
       </section>
 
-      <section class="post">
-        <h2 class="section-title">Czym jest fizyka kwantowa?</h2>
-        <p>Fizyka kwantowa to dziedzina nauki opisująca zachowanie najmniejszych cząstek we wszechświecie. Jej prawa są zupełnie inne od tych, które znamy z codziennego życia.</p>
-        <p>Fenomeny takie jak superpozycja, splątanie czy tunelowanie kwantowe otwierają nowe perspektywy w informatyce, komunikacji i badaniach nad rzeczywistością.</p>
-      </section>
-    </section>
-  </div>
-
-  <footer>&copy; 2025 Mój Blog – Wszystkie prawa zastrzeżone.</footer>
-
-  <script>
-    function zmienTlo() {
-      const koloryPastelowe = ['#e6f0f7', '#d0e7f5', '#d8f3f9', '#cce5f6', '#e3f2fd', '#f0faff', '#def3f6', '#cbefff'];
-      const losowyKolor = koloryPastelowe[Math.floor(Math.random() * koloryPastelowe.length)];
-      document.body.style.backgroundColor = losowyKolor;
-    }
-
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark-mode");
-    }
-
-    function pokazWpisy(event) {
-      event.preventDefault();
-      document.getElementById("posts-section").style.display = "block";
-      document.getElementById("posts-section").scrollIntoView({ behavior: "smooth" });
-    }
-
-    function openImage(event) {
-      event.stopPropagation();
-      document.getElementById('popup-img').style.display = 'block';
-    }
-
-    function zamknijObraz() {
-      document.getElementById('popup-img').style.display = 'none';
-    }
-  </script>
-</body>
-</html>
+      <footer className="p-6 text-center text-sm bg-black/60 mt-12">
+        © {new Date().getFullYear()} | Blog stworzony przez pasjonata nauki i technologii
+      </footer>
+    </div>
+  );
+}
