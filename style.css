@@ -88,14 +88,12 @@ nav h1 {
   gap: 2em;
   max-width: 1000px;
   width: 100%;
-  margin: 0 auto;
+  padding: 2em 1em;
   flex-wrap: wrap;
 }
 .avatar {
   width: 280px;
   flex-shrink: 0;
-  display: flex;
-  justify-content: center;
 }
 .avatar img {
   width: 100%;
@@ -103,7 +101,6 @@ nav h1 {
   border-radius: 1em;
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  display: block;
   background-color: #111;
 }
 .card {
@@ -121,7 +118,6 @@ footer {
   font-size: 0.8em;
 }
 
-/* 📱 Responsywność na telefonach */
 @media (max-width: 768px) {
   .main-content {
     flex-direction: column;
