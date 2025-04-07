@@ -1,76 +1,129 @@
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog – Fizyka, IT i Wszechświat</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      color: white;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 1s ease-in-out;
+      min-height: 100vh;
+    }
+    nav {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 1em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav h1 {
+      font-size: 1.5em;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+    }
+    .links a {
+      text-decoration: none;
+      color: black;
+      background: white;
+      padding: 0.5em 1em;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .links a:hover {
+      background: #ddd;
+    }
+    .main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2em;
+    }
+    .main img {
+      width: 220px;
+      border-radius: 1em;
+      border: 4px solid white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      margin-bottom: 1.5em;
+    }
+    .card {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 1.5em;
+      border-radius: 1em;
+      max-width: 600px;
+      text-align: center;
+    }
+    footer {
+      background: rgba(0, 0, 0, 0.6);
+      text-align: center;
+      padding: 1em;
+      margin-top: 2em;
+      font-size: 0.8em;
+    }
 
-const Button = ({ children }) => (
-  <button className="px-4 py-2 bg-white text-black rounded hover:bg-gray-200 transition">
-    {children}
-  </button>
-);
-
-const Card = ({ children }) => (
-  <div className="bg-black/70 text-white rounded-lg shadow-lg p-6 w-full">
-    {children}
-  </div>
-);
-
-export default function Blog() {
-  const [bgIndex, setBgIndex] = useState(0);
-  const backgrounds = [
-    "/backgrounds/space1.jpg",
-    "/backgrounds/tech1.jpg",
-    "/backgrounds/quantum.jpg",
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setBgIndex((prev) => (prev + 1) % backgrounds.length);
-    }, 8000);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div
-      className="min-h-screen text-white bg-cover bg-center transition-all duration-1000"
-      style={{ backgroundImage: `url(${backgrounds[bgIndex]})` }}
-    >
-      <nav className="flex flex-wrap justify-between items-center p-4 bg-black/60 shadow-xl">
-        <h1 className="text-2xl md:text-3xl font-bold">Blog: Fizyka, IT i Wszechświat</h1>
-        <div className="flex flex-wrap gap-2 mt-2 md:mt-0">
-          <Button>O mnie</Button>
-          <Button>Wszechświat</Button>
-          <Button>Fizyka</Button>
-          <Button>IT</Button>
-        </div>
-      </nav>
-
-      <section className="p-4 md:p-10 flex flex-col md:flex-row gap-6 items-center justify-center">
-        <motion.img
-          src="/me.jpg"
-          alt="Zdjęcie autora"
-          className="rounded-2xl shadow-2xl w-64 h-auto border-4 border-white"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        />
-        <motion.div
-          className="w-full max-w-xl"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-        >
-          <Card>
-            <h2 className="text-xl md:text-2xl font-semibold mb-4">Kim jestem?</h2>
-            <p>
-              Jestem pasjonatem fizyki kwantowej, IT i tajemnic Wszechświata.
-              Łączę naukę z nowoczesną technologią, starając się przekazać wiedzę w sposób przystępny, ciekawy i niekonwencjonalny.
-            </p>
-          </Card>
-        </motion.div>
-      </section>
-
-      <footer className="p-6 text-center text-sm bg-black/60 mt-12">
-        © {new Date().getFullYear()} | Blog stworzony przez pasjonata nauki i technologii
-      </footer>
+    @media (min-width: 768px) {
+      .main {
+        flex-direction: row;
+        justify-content: center;
+      }
+      .main img {
+        margin-right: 2em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h1>Blog: Fizyka, IT i Wszechświat</h1>
+    <div class="links">
+      <a href="#">O mnie</a>
+      <a href="#">Wszechświat</a>
+      <a href="#">Fizyka</a>
+      <a href="#">IT</a>
     </div>
-  );
-}
+  </nav>
+
+  <section class="main">
+    <img src="me.jpg" alt="Autor bloga" />
+    <div class="card">
+      <h2>Kim jestem?</h2>
+      <p>
+        Jestem pasjonatem fizyki kwantowej, IT i tajemnic Wszechświata.
+        Łączę naukę z nowoczesną technologią, przekazując wiedzę w sposób przystępny, ciekawy i niekonwencjonalny.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> | Blog stworzony przez pasjonata nauki i technologii
+  </footer>
+
+  <script>
+    const backgrounds = [
+      'https://images.unsplash.com/photo-1475666675596-cca2035b3d79?auto=format&fit=crop&w=1500&q=80', // space
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1500&q=80', // tech
+      'https://images.unsplash.com/photo-1607082349567-63c1708f2cdd?auto=format&fit=crop&w=1500&q=80'  // physics
+    ];
+    let current = 0;
+    function changeBackground() {
+      document.body.style.backgroundImage = `url('${backgrounds[current]}')`;
+      current = (current + 1) % backgrounds.length;
+    }
+    setInterval(changeBackground, 8000);
+    changeBackground(); // initial
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
