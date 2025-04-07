@@ -11,7 +11,6 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  transition: background-image 1s ease-in-out;
   display: flex;
   flex-direction: column;
   color: white;
@@ -22,15 +21,21 @@ body {
 body::before {
   content: "";
   position: fixed;
-  top: 0; left: 0;
-  width: 100%;
+  top: 0;
+  left: 0;
+  width: 200%;
   height: 100%;
   z-index: -1;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
   opacity: 0.3;
   transition: background-image 1.5s ease-in-out;
+  animation: scroll-bg 60s linear infinite;
+}
+@keyframes scroll-bg {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 nav {
   background: rgba(0, 0, 0, 0.7);
