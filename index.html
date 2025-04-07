@@ -58,23 +58,15 @@
       align-items: center;
     }
 
-    .avatar {
-      width: 220px;
-      height: 220px;
-      overflow: hidden;
+    /* 📷 Efekt unoszącego się zdjęcia z cieniem */
+    .avatar img {
+      max-width: 100%;
+      height: auto;
       border-radius: 1em;
       border: 4px solid white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background-color: #222; /* na wypadek przezroczystości */
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); /* miękki cień w dół */
       margin-top: 1.5em;
-    }
-
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
       display: block;
     }
 
@@ -101,7 +93,7 @@
         text-align: left;
         gap: 2em;
       }
-      .avatar {
+      .avatar img {
         margin-top: 0;
       }
     }
