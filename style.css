@@ -8,7 +8,7 @@ html, body {
 }
 body {
   font-family: Arial, sans-serif;
-  background-color: #000;
+  background-color: #111;
   color: white;
   position: relative;
   z-index: 0;
@@ -76,7 +76,7 @@ section.main-content + section.main-content {
   background-color: #111;
 }
 .card {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(30, 30, 30, 0.8);
   padding: 1.5em;
   border-radius: 1em;
   width: 100%;
