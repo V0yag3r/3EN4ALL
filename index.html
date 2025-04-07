@@ -58,20 +58,13 @@
       align-items: center;
     }
 
-    .avatar {
-      width: 220px;
-      height: 220px;
-      border: 4px solid white;
-      border-radius: 1em;
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-      margin-top: 1.5em;
-    }
-
     .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 220px;
+      height: auto;
+      border-radius: 1em;
+      border: 1px solid rgba(255, 255, 255, 0.3); /* subtelna ramka */
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      margin-top: 1.5em;
       display: block;
     }
 
@@ -82,6 +75,7 @@
       max-width: 600px;
       margin-bottom: 2em;
     }
+
     footer {
       background: rgba(0, 0, 0, 0.7);
       text-align: center;
@@ -97,7 +91,7 @@
         text-align: left;
         gap: 2em;
       }
-      .avatar {
+      .avatar img {
         margin-top: 0;
       }
     }
@@ -135,9 +129,9 @@
 
   <script>
     const backgrounds = [
-      'serwerLaka.png', // IT
-      'lazik.jpg',       // Mars
-      'tesla.png'        // Tesla
+      'serwerLaka.png',
+      'lazik.jpg',
+      'tesla.png'
     ];
     let i = 0;
     function zmienTlo() {
