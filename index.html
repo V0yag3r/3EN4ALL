@@ -4,17 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog – Fizyka, IT i Wszechświat</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
     body {
       font-family: Arial, sans-serif;
       background-size: cover;
@@ -24,7 +18,6 @@
       flex-direction: column;
       color: white;
     }
-
     nav {
       background: rgba(0, 0, 0, 0.7);
       padding: 1em;
@@ -33,47 +26,27 @@
       justify-content: space-between;
       align-items: center;
     }
-
-    nav h1 {
-      font-size: 1.5em;
-    }
-
+    nav h1 { font-size: 1.5em; }
     .links {
       display: flex;
       flex-wrap: wrap;
       gap: 1em;
       margin-top: 0.5em;
     }
-
-    .links a {
+    .links a, #langSwitcher {
       text-decoration: none;
       background: white;
       color: black;
       padding: 0.5em 1em;
       border-radius: 5px;
       transition: 0.3s;
-    }
-
-    .links a:hover {
-      background: #ddd;
-    }
-
-    #langSwitcher {
-      margin-left: 1em;
-      padding: 0.3em;
-      border-radius: 5px;
       border: none;
-      font-size: 1em;
     }
-
-    .main {
-      display: flex;
-      justify-content: center;
-      padding: 2em;
-      flex-grow: 1;
-    }
-
+    .main { display: flex; justify-content: center; padding: 2em; flex-grow: 1; position: relative; }
+    #particles-js { position: absolute; width: 100%; height: 100%; z-index: 0; }
     .main-content {
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -81,23 +54,15 @@
       max-width: 1000px;
       width: 100%;
     }
-
-    .avatar {
-      max-width: 280px;
-      flex-shrink: 0;
-      margin: 0 auto;
-    }
-
+    .avatar { max-width: 280px; flex-shrink: 0; margin: 0 auto; }
     .avatar img {
-      width: 100%;
-      height: auto;
+      width: 100%; height: auto;
       border-radius: 1em;
       border: 1px solid rgba(255, 255, 255, 0.2);
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       display: block;
       background-color: #111;
     }
-
     .card {
       background: rgba(0, 0, 0, 0.6);
       padding: 1.5em;
@@ -105,28 +70,12 @@
       width: 100%;
       max-width: 600px;
     }
-
+    canvas { max-width: 100%; }
     footer {
       background: rgba(0, 0, 0, 0.7);
       text-align: center;
       padding: 1em;
       font-size: 0.8em;
-    }
-
-    @media (min-width: 768px) {
-      .main-content {
-        flex-direction: row;
-        align-items: center;
-        text-align: left;
-      }
-
-      .avatar {
-        margin-right: 2em;
-      }
-
-      .card {
-        flex: 1;
-      }
     }
   </style>
 </head>
@@ -135,9 +84,8 @@
     <h1>Blog: Fizyka, IT i Wszechświat</h1>
     <div class="links">
       <a href="#">O mnie</a>
-      <a href="#">Wszechświat</a>
-      <a href="#">Fizyka</a>
-      <a href="#">IT</a>
+      <a href="#">Eksperymenty</a>
+      <a href="#">Wykresy</a>
       <select id="langSwitcher">
         <option value="pl">PL</option>
         <option value="en">EN</option>
@@ -146,15 +94,15 @@
   </nav>
 
   <section class="main">
+    <div id="particles-js"></div>
     <div class="main-content">
-      <!-- ZDJĘCIE -->
       <div class="avatar">
         <img src="avatar_cleaned_final.png" alt="Jacek Grodnicki" />
       </div>
-
-      <!-- TEKST -->
-      <div class="card" id="introCard">
-        <!-- Treść generowana dynamicznie -->
+      <div class="card" id="introCard"></div>
+      <div class="card">
+        <h2>Eksperyment: Wykres demo</h2>
+        <canvas id="myChart"></canvas>
       </div>
     </div>
   </section>
@@ -164,20 +112,10 @@
   </footer>
 
   <script>
-    const backgrounds = [
-      'serwerLaka.png',
-      'lazik.jpg',
-      'tesla.png'
-    ];
-    let i = 0;
-    function zmienTlo() {
-      document.body.style.backgroundImage = `url('${backgrounds[i]}')`;
-      i = (i + 1) % backgrounds.length;
-    }
-    setInterval(zmienTlo, 8000);
-    zmienTlo();
+    particlesJS.load('particles-js', 'https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/particles.json', function() {
+      console.log('particles.js załadowane');
+    });
   </script>
-
   <script>
     const content = {
       pl: `
@@ -193,20 +131,49 @@
         <p>This blog shares thoughts at the intersection of physics, IT, and the universe.</p>
       `
     };
-
     const introCard = document.getElementById("introCard");
     const langSwitcher = document.getElementById("langSwitcher");
-
     function updateLanguage(lang) {
       introCard.innerHTML = content[lang];
     }
-
     langSwitcher.addEventListener("change", (e) => {
       updateLanguage(e.target.value);
     });
-
-    // Domyślnie PL
     updateLanguage("pl");
+  </script>
+  <script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Pon', 'Wt', 'Śr', 'Czw', 'Pt'],
+        datasets: [{
+          label: 'Zainteresowanie fizyką',
+          data: [12, 19, 3, 5, 22],
+          borderWidth: 2,
+          borderColor: 'rgba(255, 255, 255, 0.8)',
+          backgroundColor: 'rgba(255,255,255,0.2)',
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { color: '#fff' },
+            grid: { color: 'rgba(255,255,255,0.1)' }
+          },
+          x: {
+            ticks: { color: '#fff' },
+            grid: { color: 'rgba(255,255,255,0.1)' }
+          }
+        },
+        plugins: {
+          legend: { labels: { color: '#fff' } }
+        }
+      }
+    });
   </script>
 </body>
 </html>
