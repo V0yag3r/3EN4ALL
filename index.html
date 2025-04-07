@@ -74,18 +74,6 @@
       width: 100%;
     }
 
-    .card {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 1.5em;
-      border-radius: 1em;
-      max-width: 600px;
-      width: 100%;
-    }
-
-    .avatar {
-      flex-shrink: 0;
-    }
-
     .avatar img {
       max-width: 100%;
       height: auto;
@@ -96,6 +84,14 @@
       display: block;
     }
 
+    .card {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 1.5em;
+      border-radius: 1em;
+      max-width: 600px;
+      width: 100%;
+    }
+
     footer {
       background: rgba(0, 0, 0, 0.7);
       text-align: center;
@@ -103,7 +99,7 @@
       font-size: 0.8em;
     }
 
-    /* Dla ekranów szerszych niż 768px – układ poziomy, zdjęcie po lewej */
+    /* Na większych ekranach — zdjęcie po lewej, tekst po prawej */
     @media (min-width: 768px) {
       .main-content {
         flex-direction: row;
@@ -113,11 +109,16 @@
 
       .avatar {
         width: 300px;
+        flex-shrink: 0;
       }
 
       .avatar img {
         width: 100%;
         height: auto;
+      }
+
+      .card {
+        flex: 1;
       }
     }
   </style>
@@ -135,12 +136,12 @@
 
   <section class="main">
     <div class="main-content">
-      <!-- ZDJĘCIE po lewej -->
+      <!-- ZDJĘCIE po lewej stronie -->
       <div class="avatar">
         <img src="avatar_fixed.png" alt="Jacek Grodnicki" />
       </div>
 
-      <!-- TEKST po prawej -->
+      <!-- TEKST po prawej stronie -->
       <div class="card">
         <h2>Kim jestem?</h2>
         <p>
@@ -157,9 +158,9 @@
 
   <script>
     const backgrounds = [
-      'serwerLaka.png',
-      'lazik.jpg',
-      'tesla.png'
+      'serwerLaka.png', // IT
+      'lazik.jpg',       // Mars
+      'tesla.png'        // Tesla
     ];
     let i = 0;
     function zmienTlo() {
