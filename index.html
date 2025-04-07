@@ -96,23 +96,13 @@
       margin-bottom: 1.5rem;
     }
 
-    .about, .summary-box {
+    .about {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1rem;
       margin-bottom: 3rem;
       text-align: center;
-    }
-
-    .about-text, .summary-text {
-      background-color: white;
-      padding: 1.5rem;
-      border-radius: 10px;
-      text-align: left;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      width: 100%;
-      max-width: 700px;
     }
 
     .about img {
@@ -143,13 +133,14 @@
       border: 4px solid white;
     }
 
-    .post {
+    .post, .about-text {
       background-color: white;
       padding: 1.5rem;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       margin-bottom: 2rem;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: left;
     }
 
     body.dark-mode .post {
@@ -225,45 +216,13 @@
         <img src="avatar_fixed.png" alt="Zdjęcie" onclick="openImage(event)" />
         <img id="popup-img" src="avatar_fixed.png" alt="Duże zdjęcie" />
       </div>
-    </section>
-
-    <section id="summary" class="summary-box">
-      <div class="summary-text">
+      <div class="about-text">
         <p>Jestem pasjonatem technologii, informatyki oraz fizyki – szczególnie fizyki kwantowej. Uwielbiam poznawać nowe rozwiązania techniczne, zgłębiać tajniki wszechświata i szukać odpowiedzi na pytania, które często wykraczają poza codzienność.</p>
+        <p>Interesuję się światem technologii i nauki. Informatyka, nowe technologie, a także fizyka – szczególnie fizyka kwantowa – to moje pasje. Zaczynałem od Atari, Commodore, Amigi – potem był już mój pierwszy PC. Programowałem w BASIC-u i jako dzieciak tworzyłem pierwsze „programy”. Nowoczesne osiągnięcia techniczne fascynowały mnie od zawsze. Wiedza była dla mnie przygodą.</p>
+        <p>Pochłaniałem filmy sci-fi i książki – szczególnie Lema i Artura C. Clarke’a. Rozbierałem sprzęty, żeby zrozumieć jak działają. Czasami interesowały mnie rzeczy, które dla moich rówieśników były nieistotne. Uwielbiam zgłębiać tajemnice wszechświata, zadawać pytania i szukać odpowiedzi. Interesuje mnie świat nie tylko przyziemny, ale też to, jak skonstruowana jest rzeczywistość.</p>
+        <p><strong>Jak zaczęła się moja przygoda z komputerami:</strong><br>Miałem może 10 lat, kiedy po raz pierwszy zobaczyłem Atari 800XL. Dźwięki z gier, klikanie klawiszy i ten niepowtarzalny zapach sprzętu elektronicznego – to było jak wejście do innego świata. Niedługo później zacząłem pisać swoje pierwsze linijki kodu w BASIC-u. Radość z działania własnego kalkulatora była ogromna!</p>
       </div>
     </section>
-
-    <section id="more-about" class="about">
-      <p class="about-text">
-        Interesuję się światem technologii i nauki. Informatyka, nowe technologie, a także fizyka – szczególnie fizyka kwantowa – to moje pasje. Zaczynałem od Atari, Commodore, Amigi – potem był już mój pierwszy PC. Programowałem w BASIC-u i jako dzieciak tworzyłem pierwsze „programy”.
-        Nowoczesne osiągnięcia techniczne fascynowały mnie od zawsze. Wiedza była dla mnie przygodą.
-      </p>
-      <p class="about-text">
-        Pochłaniałem filmy sci-fi i książki – szczególnie Lema i Artura C. Clarke’a. Rozbierałem sprzęty, żeby zrozumieć jak działają. Czasami interesowały mnie rzeczy, które dla moich rówieśników były nieistotne. Uwielbiam zgłębiać tajemnice wszechświata, zadawać pytania i szukać odpowiedzi. Interesuje mnie świat nie tylko przyziemny, ale też to, jak skonstruowana jest rzeczywistość.
-      </p>
-    </section>
-
-    <div id="extra-posts">
-      <section class="post">
-        <h2 class="section-title">Jak zaczęła się moja przygoda z komputerami</h2>
-        <p>Miałem może 10 lat, kiedy po raz pierwszy zobaczyłem Atari 800XL. Dźwięki z gier, klikanie klawiszy i ten niepowtarzalny zapach sprzętu elektronicznego – to było jak wejście do innego świata.</p>
-        <p>Niedługo później zacząłem pisać swoje pierwsze linijki kodu w BASIC-u. Radość z działania własnego kalkulatora była ogromna!</p>
-      </section>
-    </div>
-
-    <div id="new-posts">
-      <section class="post">
-        <h2 class="section-title">Nowe trendy w informatyce</h2>
-        <p>Świat informatyki dynamicznie się zmienia. Obecnie na topie są sztuczna inteligencja, uczenie maszynowe, edge computing i rozwój rozwiązań kwantowych. Te technologie zmieniają sposób, w jaki przetwarzamy dane i podejmujemy decyzje.</p>
-        <p>Warto również śledzić rozwój blockchaina, aplikacji bezserwerowych oraz coraz większą integrację AI z codziennymi urządzeniami.</p>
-      </section>
-
-      <section class="post">
-        <h2 class="section-title">Czym jest fizyka kwantowa?</h2>
-        <p>Fizyka kwantowa to dziedzina nauki opisująca zachowanie najmniejszych cząstek we wszechświecie. Jej prawa są zupełnie inne od tych, które znamy z codziennego życia.</p>
-        <p>Fenomeny takie jak superpozycja, splątanie czy tunelowanie kwantowe otwierają nowe perspektywy w informatyce, komunikacji i badaniach nad rzeczywistością.</p>
-      </section>
-    </div>
   </div>
 
   <footer>&copy; 2025 Mój Blog – Wszystkie prawa zastrzeżone.</footer>
@@ -281,17 +240,10 @@
 
     function pokazWiecej(event) {
       event.preventDefault();
-      document.getElementById("more-about").style.display = "flex";
-      document.getElementById("extra-posts").style.display = "block";
-      document.getElementById("summary").style.display = "block";
     }
 
     function pokazWpisy(event) {
       event.preventDefault();
-      document.getElementById("new-posts").style.display = "block";
-      document.getElementById("extra-posts").style.display = "block";
-      document.getElementById("more-about").style.display = "flex";
-      document.getElementById("summary").style.display = "block";
     }
 
     function openImage(event) {
