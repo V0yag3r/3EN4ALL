@@ -113,18 +113,19 @@
   </footer>
 
   <script>
-    const backgrounds = [
-      'https://mars.nasa.gov/system/resources/detail_files/25692_PIA25952-FigureA-web.jpg', // Mars
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80', // Technologia
-      'https://cdn.pixabay.com/photo/2020/02/25/07/08/robot-4880081_1280.jpg' // Robot AI
-    ];
-    let i = 0;
-    function zmienTlo() {
-      document.body.style.backgroundImage = `url('${backgrounds[i]}')`;
-      i = (i + 1) % backgrounds.length;
-    }
-    setInterval(zmienTlo, 8000);
-    zmienTlo();
-  </script>
+  const backgrounds = [
+    'https://mars.nasa.gov/system/resources/detail_files/25692_PIA25952-FigureA-web.jpg', // Mars
+    'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80', // Technologia
+    'https://images.unsplash.com/photo-1594603847661-6c9c1e8f5d3b?auto=format&fit=crop&w=1600&q=80'  // Robot AI (działa!)
+  ];
+  let i = 0;
+  function zmienTlo() {
+    document.body.style.backgroundImage = `url('${backgrounds[i]}')`;
+    i = (i + 1) % backgrounds.length;
+  }
+  setInterval(zmienTlo, 8000);
+  zmienTlo();
+</script>
+
 </body>
 </html>
