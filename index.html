@@ -76,10 +76,10 @@
 
     .avatar {
       width: 260px;
-      height: 340px;
+      height: auto;
       overflow: hidden;
       border-radius: 1em;
-      border: 2px solid rgba(255, 255, 255, 0.4); /* delikatna ramka */
+      border: 2px solid rgba(255, 255, 255, 0.4);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       background-color: #111;
       flex-shrink: 0;
@@ -87,9 +87,8 @@
 
     .avatar img {
       width: 100%;
-      height: 100%;
-      object-fit: cover; /* klucz: przycinanie bez szarych boków */
-      object-position: center;
+      height: auto;
+      object-fit: cover;
       display: block;
     }
 
@@ -138,11 +137,12 @@
 
   <section class="main">
     <div class="main-content">
-      <!-- ✅ ZDJĘCIE po LEWEJ -->
+      <!-- Zdjęcie po lewej -->
       <div class="avatar">
-        <img src="avatar_fixed.png" alt="Jacek Grodnicki" />0
+        <img src="avatar_final_cropped.png" alt="Jacek Grodnicki" />
       </div>
-      <!-- ✅ TEKST po PRAWEJ -->
+
+      <!-- Tekst po prawej -->
       <div class="card">
         <h2>Kim jestem?</h2>
         <p>
@@ -159,9 +159,9 @@
 
   <script>
     const backgrounds = [
-      'serwerLaka.png',
-      'lazik.jpg',
-      'tesla.png'
+      'serwerLaka.png', // IT
+      'lazik.jpg',       // Mars
+      'tesla.png'        // Tesla
     ];
     let i = 0;
     function zmienTlo() {
