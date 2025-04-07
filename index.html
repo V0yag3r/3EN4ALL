@@ -6,9 +6,7 @@
   <title>Blog – Fizyka, IT i Wszechświat</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      height: 100%;
-    }
+    html, body { height: 100%; }
     body {
       font-family: Arial, sans-serif;
       background-size: cover;
@@ -98,7 +96,7 @@
   </nav>
 
   <section class="main">
-    <img src="https://via.placeholder.com/220x300.png?text=Jacek+Grodnicki" alt="Jacek Grodnicki" />
+    <img src="tesla.png" alt="Jacek Grodnicki" />
     <div class="card">
       <h2>Kim jestem?</h2>
       <p>
@@ -112,23 +110,19 @@
     © 2025 | Blog stworzony przez pasjonata nauki i technologii – Jacek Grodnicki
   </footer>
 
-<script>
-  const backgrounds = [
-    'https://cdn.pixabay.com/photo/2017/03/16/23/10/server-2149325_1280.jpg',   // Serwerownia
-    'https://cdn.pixabay.com/photo/2019/09/21/20/40/mars-4498531_1280.jpg',     // Mars
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/N.Tesla.JPG/800px-N.Tesla.JPG' // Tesla
-  ];
-  let i = 0;
-  function zmienTlo() {
-    document.body.style.backgroundImage = `url('${backgrounds[i]}')`;
-    i = (i + 1) % backgrounds.length;
-  }
-  setInterval(zmienTlo, 8000);
-  zmienTlo();
-</script>
-
-
-
-
+  <script>
+    const backgrounds = [
+      'serwerownia.jpg', // IT
+      'lazik.jpg',       // Mars
+      'tesla.png'        // Tesla
+    ];
+    let i = 0;
+    function zmienTlo() {
+      document.body.style.backgroundImage = `url('${backgrounds[i]}')`;
+      i = (i + 1) % backgrounds.length;
+    }
+    setInterval(zmienTlo, 8000);
+    zmienTlo();
+  </script>
 </body>
 </html>
