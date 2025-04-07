@@ -74,22 +74,21 @@
       width: 100%;
     }
 
-    /* 🌟 ZDJĘCIE – delikatna ramka i przycięcie */
     .avatar {
-      width: 280px;
-      height: 370px;
+      width: 260px;
+      height: 340px;
       overflow: hidden;
       border-radius: 1em;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
       border: 2px solid rgba(255, 255, 255, 0.4); /* delikatna ramka */
-      background-color: #222;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      background-color: #111;
       flex-shrink: 0;
     }
 
     .avatar img {
-      width: 120%;
+      width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: cover; /* klucz: przycinanie bez szarych boków */
       object-position: center;
       display: block;
     }
@@ -139,12 +138,12 @@
 
   <section class="main">
     <div class="main-content">
-      <!-- 📸 ZDJĘCIE z delikatną ramką i przycięciem -->
+      <!-- ✅ ZDJĘCIE po LEWEJ -->
       <div class="avatar">
         <img src="avatar_fixed.png" alt="Jacek Grodnicki" />
       </div>
 
-      <!-- 📝 TEKST -->
+      <!-- ✅ TEKST po PRAWEJ -->
       <div class="card">
         <h2>Kim jestem?</h2>
         <p>
