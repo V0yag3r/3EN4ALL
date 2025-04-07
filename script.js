@@ -31,13 +31,17 @@ particlesJS('particles-js', {
 });
 
 const content = {
-  pl: `<h2>Kim jestem naprawdę?</h2>
-<p>Nazywam się <strong>Jacek Grodnicki</strong>. Mam ponad 18 lat praktyki w programowaniu...</p>
-<p>Fizyka kwantowa to nie tylko matematyka i równania – to filozofia, sposób patrzenia na rzeczywistość, który wywraca nasze klasyczne postrzeganie świata do góry nogami. W tym blogu odkrywamy nie tylko fakty, ale też pytania, które warto zadawać. Czy rzeczywistość istnieje niezależnie od obserwatora? Jakie są granice poznania? Czy świadomość może mieć wpływ na fizykę? To tylko początek... <a href="#wiecej" style="color:#00f; text-decoration:underline;">więcej</a></p>
+  pl: `
+<h2>Witaj na moim blogu!</h2>
+<p>
+Zastanawiałeś się kiedyś, jak działa wszechświat w swojej najmniejszej skali? A może interesuje Cię, co łączy kod komputerowy z prawami fizyki, które rządzą czarnymi dziurami i splątaniem kwantowym? Na tym blogu łączę swoją 18-letnią praktykę programistyczną z pasją do fizyki, eksplorując granice poznania. Każdy wpis to próba odpowiedzi na pytania, które zadają tylko najodważniejsi — czy świat jest deterministyczny? Czy jesteśmy częścią większego kodu? A może to my go piszemy? <a href="#wiecej" style="color:#00f; text-decoration:underline;">więcej</a>
+</p>
 `,
-  en: `<h2>Who am I really?</h2>
-<p>My name is <strong>Jacek Grodnicki</strong>. I have over 18 years of experience...</p>
-<p>Fizyka kwantowa to nie tylko matematyka i równania – to filozofia, sposób patrzenia na rzeczywistość, który wywraca nasze klasyczne postrzeganie świata do góry nogami. W tym blogu odkrywamy nie tylko fakty, ale też pytania, które warto zadawać. Czy rzeczywistość istnieje niezależnie od obserwatora? Jakie są granice poznania? Czy świadomość może mieć wpływ na fizykę? To tylko początek... <a href="#wiecej" style="color:#00f; text-decoration:underline;">więcej</a></p>
+  en: `
+<h2>Witaj na moim blogu!</h2>
+<p>
+Zastanawiałeś się kiedyś, jak działa wszechświat w swojej najmniejszej skali? A może interesuje Cię, co łączy kod komputerowy z prawami fizyki, które rządzą czarnymi dziurami i splątaniem kwantowym? Na tym blogu łączę swoją 18-letnią praktykę programistyczną z pasją do fizyki, eksplorując granice poznania. Każdy wpis to próba odpowiedzi na pytania, które zadają tylko najodważniejsi — czy świat jest deterministyczny? Czy jesteśmy częścią większego kodu? A może to my go piszemy? <a href="#wiecej" style="color:#00f; text-decoration:underline;">więcej</a>
+</p>
 `
 };
 
