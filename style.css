@@ -15,11 +15,13 @@ body {
 }
 #particles-js {
   position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  background-color: transparent;
   pointer-events: none;
+  background: transparent;
 }
 nav {
   background: rgba(0, 0, 0, 0.7);
@@ -56,6 +58,9 @@ nav h1 {
   width: 100%;
   padding: 2em;
   margin: 2em auto;
+}
+section.main-content + section.main-content {
+  margin-top: 3em;
 }
 .avatar {
   max-width: 280px;

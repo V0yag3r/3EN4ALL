@@ -14,19 +14,13 @@ particlesJS('particles-js', {
     },
     move: {
       enable: true,
-      speed: 2,
-      direction: "none",
-      random: false,
-      straight: false,
-      bounce: false
+      speed: 2
     }
   },
   interactivity: {
-    detect_on: "canvas",
     events: {
       onhover: { enable: true, mode: "grab" },
-      onclick: { enable: true, mode: "push" },
-      resize: true
+      onclick: { enable: true, mode: "push" }
     },
     modes: {
       grab: { distance: 140, line_linked: { opacity: 1 } },
