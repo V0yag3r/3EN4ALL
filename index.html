@@ -58,6 +58,14 @@
       background: #ddd;
     }
 
+    #langSwitcher {
+      margin-left: 1em;
+      padding: 0.3em;
+      border-radius: 5px;
+      border: none;
+      font-size: 1em;
+    }
+
     .main {
       display: flex;
       justify-content: center;
@@ -130,6 +138,10 @@
       <a href="#">Wszechświat</a>
       <a href="#">Fizyka</a>
       <a href="#">IT</a>
+      <select id="langSwitcher">
+        <option value="pl">PL</option>
+        <option value="en">EN</option>
+      </select>
     </div>
   </nav>
 
@@ -141,21 +153,8 @@
       </div>
 
       <!-- TEKST -->
-      <div class="card">
-        <h2>Kim jestem?</h2>
-        <p>
-          Nazywam się <strong>Jacek Grodnicki</strong>. Od 18 lat zawodowo zajmuję się programowaniem (C++, PHP, sieci),
-          a prywatnie pasjonuję się fizyką kwantową, astrofizyką i skrajnymi stanami materii — od czarnych dziur po
-          nadprzewodzące jądra gwiazd neutronowych.
-        </p>
-        <p>
-          Wierzę, że stoimy na progu kolejnego przełomu w nauce — zrozumienia fundamentów rzeczywistości, połączenia
-          mechaniki kwantowej z grawitacją oraz odkrycia, czym tak naprawdę jest Wszechświat.
-        </p>
-        <p>
-          Na tym blogu łączę moje dwie pasje — naukę i technologię — by dzielić się przemyśleniami, eksperymentami i projektami
-          z pogranicza fizyki, informatyki i kosmologii. Jeśli fascynuje Cię natura rzeczywistości, jesteś we właściwym miejscu.
-        </p>
+      <div class="card" id="introCard">
+        <!-- Treść generowana dynamicznie -->
       </div>
     </div>
   </section>
@@ -177,6 +176,37 @@
     }
     setInterval(zmienTlo, 8000);
     zmienTlo();
+  </script>
+
+  <script>
+    const content = {
+      pl: `
+        <h2>Kim jestem?</h2>
+        <p>Nazywam się <strong>Jacek Grodnicki</strong>. Od 18 lat zajmuję się programowaniem i pasjonuję się fizyką kwantową oraz astrofizyką.</p>
+        <p>Łączę świat nauki i technologii, wierząc, że stoimy na progu nowego przełomu.</p>
+        <p>Na tym blogu dzielę się przemyśleniami z pogranicza fizyki, IT i kosmosu.</p>
+      `,
+      en: `
+        <h2>Who am I?</h2>
+        <p>My name is <strong>Jacek Grodnicki</strong>. I have 18 years of experience in programming and a passion for quantum physics and astrophysics.</p>
+        <p>I connect science with technology, believing we're on the verge of a new breakthrough.</p>
+        <p>This blog shares thoughts at the intersection of physics, IT, and the universe.</p>
+      `
+    };
+
+    const introCard = document.getElementById("introCard");
+    const langSwitcher = document.getElementById("langSwitcher");
+
+    function updateLanguage(lang) {
+      introCard.innerHTML = content[lang];
+    }
+
+    langSwitcher.addEventListener("change", (e) => {
+      updateLanguage(e.target.value);
+    });
+
+    // Domyślnie PL
+    updateLanguage("pl");
   </script>
 </body>
 </html>
