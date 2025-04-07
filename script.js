@@ -34,13 +34,13 @@ const content = {
   pl: `
 <h2>Witaj na moim blogu!</h2>
 <p>
-Zastanawiałeś się kiedyś, jak działa wszechświat w swojej najmniejszej skali? A może interesuje Cię, co łączy kod komputerowy z prawami fizyki, które rządzą czarnymi dziurami i splątaniem kwantowym? Na tym blogu łączę swoją 18-letnią praktykę programistyczną z pasją do fizyki, eksplorując granice poznania. Każdy wpis to próba odpowiedzi na pytania, które zadają tylko najodważniejsi — czy świat jest deterministyczny? Czy jesteśmy częścią większego kodu? A może to my go piszemy? <a href="#wiecej" style="color:#00f; text-decoration:underline;">więcej</a>
+Czy świat, który widzimy, to jedyna warstwa rzeczywistości? Co kryje się pod powierzchnią znanego nam czasu i przestrzeni? Od lat fascynuje mnie fizyka kwantowa — dziedzina, która nie tylko przeczy intuicji, ale zmusza nas do przedefiniowania pojęć takich jak przyczynowość, materia, a nawet istnienie. Przez 18 lat pracowałem jako informatyk, mając styczność z różnorodnymi technologiami i systemami. Dzięki temu potrafię łączyć inżynierską precyzję z naukową ciekawością. Ten blog to mój sposób na zadawanie pytań...
 </p>
 `,
   en: `
 <h2>Witaj na moim blogu!</h2>
 <p>
-Zastanawiałeś się kiedyś, jak działa wszechświat w swojej najmniejszej skali? A może interesuje Cię, co łączy kod komputerowy z prawami fizyki, które rządzą czarnymi dziurami i splątaniem kwantowym? Na tym blogu łączę swoją 18-letnią praktykę programistyczną z pasją do fizyki, eksplorując granice poznania. Każdy wpis to próba odpowiedzi na pytania, które zadają tylko najodważniejsi — czy świat jest deterministyczny? Czy jesteśmy częścią większego kodu? A może to my go piszemy? <a href="#wiecej" style="color:#00f; text-decoration:underline;">więcej</a>
+Czy świat, który widzimy, to jedyna warstwa rzeczywistości? Co kryje się pod powierzchnią znanego nam czasu i przestrzeni? Od lat fascynuje mnie fizyka kwantowa — dziedzina, która nie tylko przeczy intuicji, ale zmusza nas do przedefiniowania pojęć takich jak przyczynowość, materia, a nawet istnienie. Przez 18 lat pracowałem jako informatyk, mając styczność z różnorodnymi technologiami i systemami. Dzięki temu potrafię łączyć inżynierską precyzję z naukową ciekawością. Ten blog to mój sposób na zadawanie pytań...
 </p>
 `
 };
