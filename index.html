@@ -5,21 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Blog – Fizyka, IT i Wszechświat</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: Arial, sans-serif;
-      color: white;
       background-size: cover;
       background-position: center;
       transition: background-image 1s ease-in-out;
       min-height: 100vh;
+      color: white;
     }
     nav {
-      background-color: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.7);
       padding: 1em;
       display: flex;
       flex-wrap: wrap;
@@ -33,14 +29,15 @@
       display: flex;
       flex-wrap: wrap;
       gap: 1em;
+      margin-top: 0.5em;
     }
     .links a {
       text-decoration: none;
-      color: black;
       background: white;
+      color: black;
       padding: 0.5em 1em;
-      border-radius: 6px;
-      transition: background 0.3s;
+      border-radius: 5px;
+      transition: 0.3s;
     }
     .links a:hover {
       background: #ddd;
@@ -50,9 +47,11 @@
       flex-direction: column;
       align-items: center;
       padding: 2em;
+      text-align: center;
     }
     .main img {
       width: 220px;
+      height: auto;
       border-radius: 1em;
       border: 4px solid white;
       box-shadow: 0 0 20px rgba(0,0,0,0.5);
@@ -63,19 +62,18 @@
       padding: 1.5em;
       border-radius: 1em;
       max-width: 600px;
-      text-align: center;
     }
     footer {
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.7);
       text-align: center;
       padding: 1em;
       margin-top: 2em;
       font-size: 0.8em;
     }
-
     @media (min-width: 768px) {
       .main {
         flex-direction: row;
+        text-align: left;
         justify-content: center;
       }
       .main img {
@@ -96,7 +94,7 @@
   </nav>
 
   <section class="main">
-    <img src="me.jpg" alt="Autor bloga" />
+    <img src="https://via.placeholder.com/220x300.png?text=Twoje+zdjecie" alt="Autor bloga" />
     <div class="card">
       <h2>Kim jestem?</h2>
       <p>
@@ -111,18 +109,18 @@
   </footer>
 
   <script>
-    const backgrounds = [
-      'https://images.unsplash.com/photo-1475666675596-cca2035b3d79?auto=format&fit=crop&w=1500&q=80', // space
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1500&q=80', // tech
-      'https://images.unsplash.com/photo-1607082349567-63c1708f2cdd?auto=format&fit=crop&w=1500&q=80'  // physics
+    const tła = [
+      'https://images.unsplash.com/photo-1475666675596-cca2035b3d79?auto=format&fit=crop&w=1500&q=80', // kosmos
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1500&q=80', // technologia
+      'https://images.unsplash.com/photo-1607082349567-63c1708f2cdd?auto=format&fit=crop&w=1500&q=80'  // fizyka
     ];
-    let current = 0;
-    function changeBackground() {
-      document.body.style.backgroundImage = `url('${backgrounds[current]}')`;
-      current = (current + 1) % backgrounds.length;
+    let i = 0;
+    function zmienTlo() {
+      document.body.style.backgroundImage = `url('${tła[i]}')`;
+      i = (i + 1) % tła.length;
     }
-    setInterval(changeBackground, 8000);
-    changeBackground(); // initial
+    setInterval(zmienTlo, 7000);
+    zmienTlo();
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
