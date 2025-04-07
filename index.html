@@ -103,15 +103,12 @@
       font-size: 0.8em;
     }
 
+    /* Dla ekranów szerszych niż 768px – układ poziomy, zdjęcie po lewej */
     @media (min-width: 768px) {
       .main-content {
         flex-direction: row;
         align-items: center;
         text-align: left;
-      }
-
-      .card {
-        flex: 1;
       }
 
       .avatar {
@@ -138,15 +135,18 @@
 
   <section class="main">
     <div class="main-content">
+      <!-- ZDJĘCIE po lewej -->
+      <div class="avatar">
+        <img src="avatar_fixed.png" alt="Jacek Grodnicki" />
+      </div>
+
+      <!-- TEKST po prawej -->
       <div class="card">
         <h2>Kim jestem?</h2>
         <p>
           Nazywam się <strong>Jacek Grodnicki</strong>. Jestem pasjonatem fizyki kwantowej, informatyki oraz tajemnic Wszechświata.
           Łączę naukę z nowoczesną technologią, przekazując wiedzę w sposób przystępny, ciekawy i niekonwencjonalny.
         </p>
-      </div>
-      <div class="avatar">
-        <img src="avatar_fixed.png" alt="Jacek Grodnicki" />
       </div>
     </div>
   </section>
@@ -157,9 +157,9 @@
 
   <script>
     const backgrounds = [
-      'serwerLaka.png', // IT
-      'lazik.jpg',       // Mars
-      'tesla.png'        // Tesla
+      'serwerLaka.png',
+      'lazik.jpg',
+      'tesla.png'
     ];
     let i = 0;
     function zmienTlo() {
