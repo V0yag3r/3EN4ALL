@@ -127,6 +127,20 @@
       cursor: pointer;
     }
 
+    #popup-img {
+      display: none;
+      position: fixed;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 90vw;
+      max-height: 80vh;
+      z-index: 1000;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
+      border-radius: 12px;
+      border: 4px solid white;
+    }
+
     .post {
       background-color: white;
       padding: 1.5rem;
@@ -194,7 +208,7 @@
     }
   </style>
 </head>
-<body>
+<body onclick="zamknijObraz()">
   <header>
     <h1>Mój Blog</h1>
     <p>Informatyka, Fizyka, Wszechświat, Technologie</p>
@@ -209,15 +223,16 @@
       <a href="#">Kontakt</a>
     </div>
     <div class="nav-buttons">
-      <button onclick="zmienTlo()">Zmień tło</button>
-      <button onclick="toggleDarkMode()">Ciemny motyw</button>
+      <button onclick="zmienTlo(); event.stopPropagation();">Zmień tło</button>
+      <button onclick="toggleDarkMode(); event.stopPropagation();">Ciemny motyw</button>
     </div>
   </nav>
 
   <div class="container">
     <section id="about" class="about scroll">
       <h2 class="section-title">O mnie</h2>
-      <img src="avatar_fixed.png" alt="Zdjęcie" onclick="openImage()" />
+      <img src="avatar_fixed.png" alt="Zdjęcie" onclick="openImage(event)" />
+      <img id="popup-img" src="avatar_fixed.png" alt="Duże zdjęcie" />
       <p class="about-text">
         Interesuję się światem technologii i nauki. Informatyka, nowe technologie, a także fizyka – szczególnie fizyka kwantowa – to moje pasje. Zaczynałem od Atari, Commodore, Amigi – potem był już mój pierwszy PC. Programowałem w BASIC-u i jako dzieciak tworzyłem pierwsze „programy”.<br>
         Nowoczesne osiągnięcia techniczne fascynowały mnie od zawsze. Wiedza była dla mnie przygodą. <span class="show-more-link" onclick="pokazWiecej(event)">...w której żyjemy</span>
@@ -270,18 +285,16 @@
       document.getElementById("more-about").style.display = "block";
       document.getElementById("extra-posts").style.display = "block";
       event.target.style.display = "none";
+      event.stopPropagation();
     }
 
-    function openImage() {
-      const img = document.createElement('img');
-      img.src = 'avatar_fixed.png';
-      img.style.width = '100%';
-      img.style.maxWidth = '600px';
-      img.style.display = 'block';
-      img.style.margin = '2rem auto';
-      img.style.borderRadius = '20px';
-      img.style.boxShadow = '0 0 20px rgba(0,0,0,0.5)';
-      document.body.appendChild(img);
+    function openImage(event) {
+      event.stopPropagation();
+      document.getElementById('popup-img').style.display = 'block';
+    }
+
+    function zamknijObraz() {
+      document.getElementById('popup-img').style.display = 'none';
     }
   </script>
 </body>
