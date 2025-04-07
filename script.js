@@ -1,4 +1,4 @@
-// Efekt cząsteczek
+// particles.js efekt
 particlesJS('particles-js', {
   particles: {
     number: { value: 80, density: { enable: true, value_area: 800 } },
@@ -37,7 +37,7 @@ particlesJS('particles-js', {
   retina_detect: true
 });
 
-// Tekst po polsku/angielsku
+// tekst
 const content = {
   pl: `
     <h2>Kim jestem?</h2>
@@ -62,7 +62,7 @@ langSwitcher.addEventListener("change", (e) => {
 });
 updateLanguage("pl");
 
-// 🔁 Animacja tła
+// animowane tło (zmiana obrazów)
 const backgrounds = [
   "images/tesla.png",
   "images/lazik.jpg",
@@ -82,4 +82,4 @@ function updateBackground() {
   bgIndex = (bgIndex + 1) % backgrounds.length;
 }
 updateBackground();
-setInterval(updateBackground, 8000); // zmiana co 8 sek
+setInterval(updateBackground, 10000); // co 10 sek zmiana tła
