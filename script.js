@@ -1,4 +1,4 @@
-// Efekt cząsteczek
+// particles.js
 particlesJS('particles-js', {
   particles: {
     number: { value: 80, density: { enable: true, value_area: 800 } },
@@ -37,7 +37,7 @@ particlesJS('particles-js', {
   retina_detect: true
 });
 
-// Treść po polsku i angielsku
+// języki
 const content = {
   pl: `
     <h2>Kim jestem?</h2>
@@ -52,7 +52,6 @@ const content = {
     <p>This blog shares thoughts at the intersection of physics, IT, and the universe.</p>
   `
 };
-
 const introCard = document.getElementById("introCard");
 const langSwitcher = document.getElementById("langSwitcher");
 function updateLanguage(lang) {
@@ -63,14 +62,13 @@ langSwitcher.addEventListener("change", (e) => {
 });
 updateLanguage("pl");
 
-// Slideshow tła
+// slideshow tła
 const backgrounds = [
   "images/tesla.png",
   "images/lazik.jpg",
   "images/serwerLaka.png"
 ];
 let bgIndex = 0;
-
 const styleBg = document.createElement("style");
 document.head.appendChild(styleBg);
 
@@ -83,4 +81,4 @@ function updateBackground() {
   bgIndex = (bgIndex + 1) % backgrounds.length;
 }
 updateBackground();
-setInterval(updateBackground, 10000); // co 10 sekund zmiana tła
+setInterval(updateBackground, 10000);
