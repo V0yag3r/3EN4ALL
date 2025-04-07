@@ -52,19 +52,25 @@
       text-align: center;
       flex-grow: 1;
     }
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     .main img {
       width: 220px;
       height: auto;
       border-radius: 1em;
       border: 4px solid white;
       box-shadow: 0 0 20px rgba(0,0,0,0.5);
-      margin-bottom: 1.5em;
+      margin-top: 1.5em;
     }
     .card {
       background: rgba(0, 0, 0, 0.6);
       padding: 1.5em;
       border-radius: 1em;
       max-width: 600px;
+      margin-bottom: 2em;
     }
     footer {
       background: rgba(0, 0, 0, 0.7);
@@ -72,14 +78,17 @@
       padding: 1em;
       font-size: 0.8em;
     }
+
     @media (min-width: 768px) {
-      .main {
+      .main-content {
         flex-direction: row;
-        text-align: left;
         justify-content: center;
+        align-items: center;
+        text-align: left;
+        gap: 2em;
       }
       .main img {
-        margin-right: 2em;
+        margin-top: 0;
       }
     }
   </style>
@@ -96,13 +105,15 @@
   </nav>
 
   <section class="main">
-    <img src="tesla.png" alt="Jacek Grodnicki" />
-    <div class="card">
-      <h2>Kim jestem?</h2>
-      <p>
-        Nazywam się <strong>Jacek Grodnicki</strong>. Jestem pasjonatem fizyki kwantowej, informatyki oraz tajemnic Wszechświata.
-        Łączę naukę z nowoczesną technologią, przekazując wiedzę w sposób przystępny, ciekawy i niekonwencjonalny.
-      </p>
+    <div class="main-content">
+      <div class="card">
+        <h2>Kim jestem?</h2>
+        <p>
+          Nazywam się <strong>Jacek Grodnicki</strong>. Jestem pasjonatem fizyki kwantowej, informatyki oraz tajemnic Wszechświata.
+          Łączę naukę z nowoczesną technologią, przekazując wiedzę w sposób przystępny, ciekawy i niekonwencjonalny.
+        </p>
+      </div>
+      <img src="avatar_fixed.png" alt="Jacek Grodnicki" />
     </div>
   </section>
 
