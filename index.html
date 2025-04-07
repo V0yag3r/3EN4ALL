@@ -60,16 +60,6 @@
       transform: scale(1.05);
     }
 
-    .menu-hover {
-      position: relative;
-      display: inline-block;
-      padding-bottom: 1rem;
-    }
-
-    .submenu {
-      display: none;
-    }
-
     .nav-buttons {
       display: flex;
       gap: 0.5rem;
@@ -106,13 +96,23 @@
       margin-bottom: 1.5rem;
     }
 
-    .about {
+    .about, .summary-box {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1rem;
       margin-bottom: 3rem;
       text-align: center;
+    }
+
+    .about-text, .summary-text {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: left;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      width: 100%;
+      max-width: 700px;
     }
 
     .about img {
@@ -131,13 +131,13 @@
     #popup-img {
       display: none;
       position: absolute;
-      top: 20px;
+      top: -20px;
       left: 50%;
       transform: translateX(-50%);
-      max-width: 400px;
-      width: 90%;
+      max-width: 500px;
+      width: 95vw;
       height: auto;
-      z-index: 10;
+      z-index: 100;
       box-shadow: 0 0 20px rgba(0,0,0,0.7);
       border-radius: 12px;
       border: 4px solid white;
@@ -163,7 +163,7 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
 
-    #more-about, #extra-posts {
+    #more-about, #extra-posts, #summary, #new-posts {
       display: none;
       margin-top: 2rem;
     }
@@ -173,12 +173,6 @@
       padding: 1.5rem;
       background-color: #f1f1f1;
       color: #777;
-    }
-
-    .show-more-link {
-      color: #007bff;
-      cursor: pointer;
-      text-decoration: underline;
     }
 
     @media (max-width: 600px) {
@@ -203,10 +197,6 @@
         width: 100%;
         justify-content: center;
       }
-
-      .about img {
-        margin-bottom: 1rem;
-      }
     }
   </style>
 </head>
@@ -218,10 +208,8 @@
 
   <nav>
     <div class="nav-links">
-      <div class="menu-hover">
-        <a href="#about" onclick="pokazWiecej(event)">O mnie</a>
-      </div>
-      <a href="#" onclick="pokazWiecej(event)">Wpisy</a>
+      <a href="#about" onclick="pokazWiecej(event)">O mnie</a>
+      <a href="#" onclick="pokazWpisy(event)">Wpisy</a>
       <a href="#">Kontakt</a>
     </div>
     <div class="nav-buttons">
@@ -231,11 +219,17 @@
   </nav>
 
   <div class="container">
-    <section id="about" class="about scroll">
+    <section id="about" class="about">
       <h2 class="section-title">O mnie</h2>
       <div style="position: relative;">
         <img src="avatar_fixed.png" alt="Zdjęcie" onclick="openImage(event)" />
         <img id="popup-img" src="avatar_fixed.png" alt="Duże zdjęcie" />
+      </div>
+    </section>
+
+    <section id="summary" class="summary-box">
+      <div class="summary-text">
+        <p>Jestem pasjonatem technologii, informatyki oraz fizyki – szczególnie fizyki kwantowej. Uwielbiam poznawać nowe rozwiązania techniczne, zgłębiać tajniki wszechświata i szukać odpowiedzi na pytania, które często wykraczają poza codzienność.</p>
       </div>
     </section>
 
@@ -252,22 +246,22 @@
     <div id="extra-posts">
       <section class="post">
         <h2 class="section-title">Jak zaczęła się moja przygoda z komputerami</h2>
-        <p>
-          Miałem może 10 lat, kiedy po raz pierwszy zobaczyłem Atari 800XL. Dźwięki z gier, klikanie klawiszy i ten niepowtarzalny zapach sprzętu elektronicznego – to było jak wejście do innego świata.
-        </p>
-        <p>
-          Niedługo później, z pomocą starszego kuzyna, zacząłem pisać swoje pierwsze linijki kodu w BASIC-u. Radość, gdy udało mi się stworzyć prosty kalkulator, była ogromna! Komputery stały się moim oknem na świat – miejscem eksperymentów, zabawy i nauki.
-        </p>
+        <p>Miałem może 10 lat, kiedy po raz pierwszy zobaczyłem Atari 800XL. Dźwięki z gier, klikanie klawiszy i ten niepowtarzalny zapach sprzętu elektronicznego – to było jak wejście do innego świata.</p>
+        <p>Niedługo później zacząłem pisać swoje pierwsze linijki kodu w BASIC-u. Radość z działania własnego kalkulatora była ogromna!</p>
+      </section>
+    </div>
+
+    <div id="new-posts">
+      <section class="post">
+        <h2 class="section-title">Nowe trendy w informatyce</h2>
+        <p>Świat informatyki dynamicznie się zmienia. Obecnie na topie są sztuczna inteligencja, uczenie maszynowe, edge computing i rozwój rozwiązań kwantowych. Te technologie zmieniają sposób, w jaki przetwarzamy dane i podejmujemy decyzje.</p>
+        <p>Warto również śledzić rozwój blockchaina, aplikacji bezserwerowych oraz coraz większą integrację AI z codziennymi urządzeniami.</p>
       </section>
 
       <section class="post">
-        <h2 class="section-title">Dlaczego kocham fizykę (a szczególnie fizykę kwantową)</h2>
-        <p>
-          Fizyka zawsze mnie fascynowała, bo nie zadowala się powierzchowną odpowiedzią. Szuka "dlaczego", a nie tylko "jak". Szczególnie fizyka kwantowa wydaje się jak z innego wymiaru – cząstki będące jednocześnie w dwóch miejscach, splątanie kwantowe, dualizm korpuskularno-falowy... brzmi jak science fiction, a to przecież rzeczywistość!
-        </p>
-        <p>
-          Dla mnie fizyka to coś więcej niż przedmiot – to sposób patrzenia na świat. Dzięki niej wiem, że nasza codzienność to tylko wierzchołek góry lodowej, a pod spodem kryją się niesamowite prawa natury, które wciąż odkrywamy.
-        </p>
+        <h2 class="section-title">Czym jest fizyka kwantowa?</h2>
+        <p>Fizyka kwantowa to dziedzina nauki opisująca zachowanie najmniejszych cząstek we wszechświecie. Jej prawa są zupełnie inne od tych, które znamy z codziennego życia.</p>
+        <p>Fenomeny takie jak superpozycja, splątanie czy tunelowanie kwantowe otwierają nowe perspektywy w informatyce, komunikacji i badaniach nad rzeczywistością.</p>
       </section>
     </div>
   </div>
@@ -289,7 +283,15 @@
       event.preventDefault();
       document.getElementById("more-about").style.display = "flex";
       document.getElementById("extra-posts").style.display = "block";
-      event.stopPropagation();
+      document.getElementById("summary").style.display = "block";
+    }
+
+    function pokazWpisy(event) {
+      event.preventDefault();
+      document.getElementById("new-posts").style.display = "block";
+      document.getElementById("extra-posts").style.display = "block";
+      document.getElementById("more-about").style.display = "flex";
+      document.getElementById("summary").style.display = "block";
     }
 
     function openImage(event) {
