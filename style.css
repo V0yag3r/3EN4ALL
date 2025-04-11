@@ -164,3 +164,11 @@ footer {
   z-index: 1;
   pointer-events: auto;
 }
+
+
+nav h1.animated-title {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  word-wrap: break-word;
+}
