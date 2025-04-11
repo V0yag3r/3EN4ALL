@@ -172,3 +172,13 @@ nav h1.animated-title {
   text-align: center;
   word-wrap: break-word;
 }
+
+
+.animated-title {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1em;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: center;
+}
