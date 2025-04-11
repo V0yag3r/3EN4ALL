@@ -131,3 +131,24 @@ nav {
   margin: 0 auto;
   display: block;
 }
+
+
+.avatar {
+  float: none;
+  margin: 0 auto;
+  display: block;
+}
+
+.main-content,
+.card {
+  text-align: center;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin: 1em auto;
+  width: fit-content;
+}
