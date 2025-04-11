@@ -15,19 +15,13 @@ particlesJS('particles-js', {
     },
     move: {
       enable: true,
-      speed: 0.3,
-      direction: "none",
-      random: false,
-      straight: false,
-      bounce: false
+      speed: 2
     }
   },
   interactivity: {
-    detect_on: "canvas",
     events: {
       onhover: { enable: true, mode: "grab" },
-      onclick: { enable: true, mode: "push" },
-      resize: true
+      onclick: { enable: true, mode: "push" }
     },
     modes: {
       grab: { distance: 140, line_linked: { opacity: 1 } },
@@ -39,18 +33,21 @@ particlesJS('particles-js', {
 
 const content = {
   pl: `
-    <h2>Kim jestem?</h2>
-    <p>Nazywam się <strong>Jacek Grodnicki</strong>. Od 18 lat zajmuję się programowaniem i pasjonuję się fizyką kwantową oraz astrofizyką.</p>
-    <p>Łączę świat nauki i technologii, wierząc, że stoimy na progu nowego przełomu.</p>
-    <p>Na tym blogu dzielę się przemyśleniami z pogranicza fizyki, IT i kosmosu.</p>
-  `,
+<h2>Witaj na moim blogu!</h2>
+<p>Czy świat, który widzimy, to jedyna warstwa rzeczywistości? Co kryje się pod powierzchnią znanego nam czasu i przestrzeni? Od lat fascynuje mnie fizyka kwantowa — dziedzina, która nie tylko przeczy intuicji, ale zmusza nas do przedefiniowania pojęć takich jak przyczynowość, materia, a nawet istnienie. Przez 18 lat pracowałem jako informatyk, mając styczność z różnorodnymi technologiami i systemami. Dzięki temu potrafię łączyć inżynierską precyzję z naukową ciekawością.</p>
+<p>Ten blog to moja osobista przestrzeń do zadawania pytań — nie tylko naukowych, ale też filozoficznych. Interesuje mnie, jak splątanie cząstek, tunelowanie kwantowe czy eksperyment podwójnej szczeliny mogą mieć wpływ na nasze rozumienie świadomości, tożsamości, a nawet wolnej woli. To nie tylko blog o fizyce, ale także o ludziach, o nas — o tym, jak interpretujemy rzeczywistość i co możemy z nią zrobić. Moim celem nie jest dawanie gotowych odpowiedzi, lecz prowokowanie do myślenia.</p>
+<p>Na blogu pojawią się również treści z pogranicza informatyki, technologii i sztucznej inteligencji. Chcę pokazać, jak wykorzystać mechanikę kwantową w informatyce i odwrotnie — jak informatyka może pomóc w modelowaniu zjawisk fizycznych. Jeśli szukasz miejsca, gdzie nauka spotyka się z pasją i osobistym spojrzeniem, jesteś we właściwym miejscu.</p>
+<p><a href="#wiecej" style="color:#00f; text-decoration:underline;">więcej</a></p>
+`,
   en: `
-    <h2>Who am I?</h2>
-    <p>My name is <strong>Jacek Grodnicki</strong>. I have 18 years of experience in programming and a passion for quantum physics and astrophysics.</p>
-    <p>I connect science with technology, believing we're on the verge of a new breakthrough.</p>
-    <p>This blog shares thoughts at the intersection of physics, IT, and the universe.</p>
-  `
+<h2>Welcome to my blog!</h2>
+<p>Is the world we see the only layer of reality? What lies beneath the surface of time and space as we know them? I have long been fascinated by quantum physics — a field that not only defies intuition but forces us to redefine concepts like causality, matter, and even existence. For 18 years I worked as an IT specialist, dealing with diverse technologies and systems. This allows me to combine engineering precision with scientific curiosity.</p>
+<p>This blog is my personal space for asking questions — not only scientific but also philosophical. I'm interested in how quantum entanglement, tunneling or the double-slit experiment affect our understanding of consciousness, identity and even free will. This is not just a blog about physics, but also about people — about how we interpret reality and what we can do with it. I'm not here to give you final answers — I want to provoke thought.</p>
+<p>You’ll also find content about computing, technology and AI. I want to show how quantum mechanics can influence computing and how computing helps simulate complex physical systems. If you're looking for a place where science meets curiosity and personal perspective, you're in the right place.</p>
+<p><a href="#more" style="color:#00f; text-decoration:underline;">more</a></p>
+`
 };
+
 const introCard = document.getElementById("introCard");
 const langSwitcher = document.getElementById("langSwitcher");
 function updateLanguage(lang) {
