@@ -37,13 +37,13 @@ window.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".slide");
   if (slides.length > 0) {
     let current = 0;
-    slides.forEach((s, i) => s.classList.remove("active"));
     slides[current].classList.add("active");
 
     setInterval(() => {
+      const next = (current + 1) % slides.length;
       slides[current].classList.remove("active");
-      current = (current + 1) % slides.length;
-      slides[current].classList.add("active");
+      slides[next].classList.add("active");
+      current = next;
     }, 4000);
   }
 });
