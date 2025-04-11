@@ -54,9 +54,42 @@ body {
   font-size: 2em;
   text-align: center;
   padding: 1em;
+  text-shadow: 0 0 5px #fff, 0 0 10px #88f;
 }
 @keyframes fadeGlow {
   0% { opacity: 0; text-shadow: none; }
   30% { opacity: 1; text-shadow: 0 0 5px #fff; }
   100% { opacity: 0.4; text-shadow: 0 0 2px #00f6ff; }
+}
+nav {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+.links a, #langSwitcher {
+  text-decoration: none;
+  background: linear-gradient(135deg, #222, #444);
+  color: #00f6ff;
+  padding: 0.6em 1.2em;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.95em;
+  transition: all 0.3s ease;
+  border: 1px solid #00f6ff;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 246, 255, 0.2);
+  text-shadow: 0 0 2px #00f6ff;
+}
+.links a:hover, #langSwitcher:hover {
+  background: linear-gradient(135deg, #333, #555);
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0, 246, 255, 0.4);
 }
