@@ -15,7 +15,7 @@ particlesJS('particles-js', {
     },
     move: {
       enable: true,
-      speed: 2
+      speed: 0.3
     }
   },
   interactivity: {
