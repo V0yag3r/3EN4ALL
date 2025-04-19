@@ -1,69 +1,211 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog – Fizyka, IT i Wszechświat</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start bloga</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, #000000 0%, #0a001f 100%);
+      color: #66ffcc;
+      font-family: 'Share Tech Mono', monospace;
+      overflow-y: auto;
+    }
+
+    #particles-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      border-bottom: 1px solid #66ffcc;
+      text-shadow: 0 0 4px #66ffcc;
+      z-index: 10;
+    }
+
+    nav a {
+      color: #66ffcc;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    nav button {
+      background: none;
+      border: 1px solid #66ffcc;
+      color: #66ffcc;
+      font-family: 'Share Tech Mono', monospace;
+      padding: 5px 10px;
+      cursor: pointer;
+      text-shadow: 0 0 5px #66ffcc, 0 0 10px #553377;
+    }
+
+    footer {
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      padding: 10px;
+      border-top: 1px solid #66ffcc;
+      text-shadow: 0 0 5px #66ffcc, 0 0 10px #553377;
+      z-index: 10;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px;
+      gap: 30px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: nowrap;
+    }
+
+    .link {
+      width: 280px;
+      height: 400px;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 0 6px #66ffcc inset;
+      border: 2px solid #553377;
+      background-size: cover;
+      background-position: center;
+      transform: scale(0.1) translateZ(0px);
+      opacity: 0;
+      animation-fill-mode: forwards;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .link:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #553377;
+    }
+
+    .fly-out {
+      animation: flyOutwards 2.5s ease-out forwards;
+    }
+
+    @keyframes flyOutwards {
+      0% {
+        transform: scale(1) translateZ(0);
+        opacity: 0;
+      }
+      80% {
+        transform: scale(1.05) translateZ(-20px);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1) translateZ(-50px);
+        opacity: 1;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div id="particles-js"></div>
-
-  
+  <canvas id="particles-canvas"></canvas>
 
   <nav>
-  <h1 class="animated-title">Myślenie poza schematem: nauka, technologia, wszechświat</h1>
-  <div class="links">
-    <a href="about.html">O mnie</a>
-    <a href="post1.html">Post 1</a>
-    <a href="post2.html">Post 2</a>
-    <a href="post3.html">Post 3</a>
-    <select id="langSwitcher">
-      <option value="pl">PL</option>
-      <option value="en">EN</option>
-    </select>
-  </div>
-</nav>
-
-<section class="slider">
-  <div class="slide active" onclick="location.href='post1.html'">
-    <img src="images/post1.png" alt="Teleportacja Kwantowa">
-    <div class="slide-caption">Teleportacja Kwantowa</div>
-  </div>
-  <div class="slide" onclick="location.href='post2.html'">
-    <img src="images/post2.png" alt="AI a Kryptografia">
-    <div class="slide-caption">AI a Kryptografia</div>
-  </div>
-  <div class="slide" onclick="location.href='post3.html'">
-    <img src="images/post3.png" alt="Świadomość w Fizyce">
-    <div class="slide-caption">Świadomość w Fizyce</div>
-  </div>
-</section>
-
-
-  <section class="main main-content" id="o-mnie">
-    <div class="card">
-      <div class="avatar">
-        <img src="images/avatar_cleaned_final.png" alt="Jacek Grodnicki" />
-      </div>
-      <h2>Witaj na moim blogu!</h2>
-      <p>
-Czy świat, który widzimy na co dzień, to jedyna warstwa rzeczywistości? A może istnieje coś więcej — coś, czego nie potrafimy dostrzec gołym okiem, ale co można opisać za pomocą równań, modeli i myśli eksperymentalnych? Od wielu lat fascynuje mnie fizyka kwantowa — dziedzina, która burzy intuicję, stawia pod znakiem zapytania to, co oczywiste, i pokazuje, że rzeczywistość może być zupełnie inna, niż nam się wydaje. Przez 18 lat pracowałem jako informatyk, zajmując się technologią od strony praktycznej: tworzyłem, analizowałem i optymalizowałem systemy, które codziennie wspierają życie milionów ludzi.
-</p>
-<p>
-Na tym blogu łączę swoje doświadczenie zawodowe z pasją do odkrywania tego, co nieznane. Fizyka i informatyka, choć pozornie odległe, przenikają się coraz bardziej — zarówno w laboratoriach naukowych, jak i w zastosowaniach codziennych. Piszę o zjawiskach takich jak splątanie kwantowe, dualizm korpuskularno-falowy, teleportacja kwantowa, ale także o tym, jak te idee wpływają na nasze postrzeganie świata, społeczeństwa, a nawet nas samych. Staram się tłumaczyć trudne pojęcia w sposób przystępny, pokazując ich związek z codziennością.
-</p>
-<p>
-Ten blog to nie tylko miejsce, w którym dzielę się wiedzą — to przestrzeń do zadawania pytań, szukania sensu i prowokowania do refleksji. Czy rzeczywistość istnieje niezależnie od obserwatora? Czy świadomość może mieć wpływ na przebieg zjawisk fizycznych? Jak bardzo technologia zbliża nas do granic poznania — a kiedy te granice stają się tylko iluzją? Jeżeli fascynuje Cię myślenie poza schematami, jeśli chcesz rozumieć więcej niż tylko powierzchnię rzeczy — zapraszam. Wspólnie poszukajmy odpowiedzi w gąszczu nauki i filozofii.
-</p>
+    <button>PL / EN</button>
+    <div>
+      <a href="#">O mnie</a>
+      <a href="#">Kontakt</a>
     </div>
-  </section>
+  </nav>
 
-  <footer id="kontakt">
-    © 2025 | Blog stworzony przez pasjonata nauki i technologii – Jacek Grodnicki
+  <div class="container">
+    <div class="row">
+      <a href="https://example.com/fizyka" class="link" id="img1" style="background-image: url('img/fizyka.png');"></a>
+      <a href="https://example.com/ai" class="link" id="img2" style="background-image: url('img/ai.png');"></a>
+      <a href="https://example.com/ufo" class="link" id="img3" style="background-image: url('img/ufo.png');"></a>
+    </div>
+    <div class="row">
+      <a href="https://example.com/astronomia" class="link" id="img4" style="background-image: url('img/astronomia.png');"></a>
+      <a href="https://example.com/filozofia" class="link" id="img5" style="background-image: url('img/filozofia.png');"></a>
+      <a href="https://example.com/matematyka" class="link" id="img6" style="background-image: url('img/matematyka.png');"></a>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 TwojBlog.pl — Wszelkie prawa zastrzeżone.
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Matrix effect
+    
+setTimeout(() => {
+      const canvas = document.getElementById("particles-canvas");
+
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const particles = [];
+      const numParticles = 60;
+
+      for (let i = 0; i < numParticles; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.8 + 0.5,
+          dx: (Math.random() - 0.5) * 0.3,
+          dy: (Math.random() - 0.5) * 0.3,
+          alpha: Math.random() * 0.3 + 0.2
+        });
+      }
+
+      function drawParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let p of particles) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(102, 255, 204," + p.alpha + ")";
+          ctx.fill();
+          p.x += p.dx;
+          p.y += p.dy;
+          if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        }
+        requestAnimationFrame(drawParticles);
+      }
+
+      drawParticles();
+    }, 3000);
+
+    // Animacja przylotu przycisków
+    window.onload = () => {
+      const delays = [200, 600, 1000, 1400, 1800, 2200];
+      for (let i = 1; i <= 6; i++) {
+        setTimeout(() => {
+          document.getElementById('img' + i).classList.add('fly-out');
+        }, delays[i - 1]);
+      }
+    };
+  </script>
 </body>
 </html>
